@@ -45,12 +45,3 @@
 
   </footer>
   <!-- Footer -->
-
-  <!--===== GSAP =====-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-
-  <!--===== MAIN JS =====-->
-  <script src="includes/home_main.js"></script>
-  </body>
-
-  </html>
