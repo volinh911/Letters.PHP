@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "id16991579_19bit2_letters";
-$pw = "VietN@m19590BIT2";
-$db = "id16991579_letters";
+$user = "root";
+$pw = "";
+$db = "19bit2_letters";
 
 // #1: create the conn object
 $conn = new mysqli($host, $user, $pw, $db);
