@@ -40,7 +40,6 @@
         <img src="images/stars.png" id="stars" alt="">
         <img src="images/moon.png" id="moon" alt="">
         <img src="images/mountains_behind.png" id="mountains_behind" alt="">
-        <a href="#" id="btn">Explore</a>
         <img src="images/mountains_front.png" id="mountains_front" alt="">
     </section>
 

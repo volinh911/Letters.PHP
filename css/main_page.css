@@ -177,17 +177,6 @@ header ul li a.active {
     font-weight: 400;
 }
 
-.main-banner #btn {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 30px;
-    border-radius: 40px;
-    background: #fff;
-    color: #2b1055;
-    font-size: 1.2em;
-    transform: translateY(100px);
-}
-
 .sec {
     position: relative;
     padding: 100px;
