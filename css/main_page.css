@@ -56,6 +56,25 @@ header ul li a.active {
     background: #fff;
     color: #2b1055;
 }
+.msg {
+  width: 100%;
+  margin: 5px auto;
+  padding: 8px;
+  border-radius: 5px;
+  list-style: none;
+}
+
+.success {
+  color: #5cb85c;
+  border: 1px solid #5cb85c;
+  background: #bcf5bc;
+}
+
+.error {
+  color: whitesmoke;
+  border: 1px solid #d9534f;
+  background: #d9534f;
+}
 
 @media (max-width: 992px) {
     #header {

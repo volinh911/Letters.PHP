@@ -165,7 +165,7 @@ img{
     margin-bottom: 3rem;
     background-color: var(--first-color);
     color: #fff;
-    border-radius: .5rem;
+    border-radius: 2rem;
     cursor: pointer;
     transition: .3s;
 }

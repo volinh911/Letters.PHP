@@ -1,5 +1,6 @@
 <?php
-        include_once("./db.php");
+         session_start();   
+         include_once("db.php");
         /*=== EXECUTE FUNCTION ===*/
         function executeQuery($sql, $data)
         {
@@ -32,7 +33,12 @@
             return $records;
         }
 
+
         $errors = [];
+        $username="";
+        $email="";
+        $password="";
+        //==============REGISTER FUNCTION============
         if (isset($_POST['register-btn'])) {
             if (empty($_POST['username'])) {
                 array_push($errors, "Username is required");
@@ -61,14 +67,50 @@
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param('isss', $admin, $username, $email, $password);
                 $stmt->execute();
-                // else{
-                //   $error=$conn->errno. ''. $conn->error;
-                //   echo $error;
-                // }
+                
+                //log userin
+                $_SESSION['id']=$_POST['id'];
+                $_SESSION['username']=$_POST['username'];
+                $_SESSION['admin']=$_POST['admin'];
+                // $_SESSION['message']="Logged in successfully";
+                // $_SESSION['type']="success";
+                header('location: index.php');
+                exit();
+
+            }else{
+                $username=$_POST['username'];
+                $email=$_POST['email'];
+                $password=$_POST['password'];
             }
 
         }
       
+        if (isset($_POST['login-btn'])) {
+            if (empty($_POST['username'])) {
+                array_push($errors,"Username is required");
+            }
+            if (empty($_POST['password'])) {
+                  array_push($errors, "Password is required");
+            }
+
+            if (count($errors)===0) {
+                $user=selectOne('users',['username'=>$_POST['username']]);
+
+                if ($user && password_verify($_POST['password'], $user['password'])) {
+                    $_SESSION['id'] = $_POST['id'];
+                    $_SESSION['username'] = $_POST['username'];
+                    $_SESSION['admin'] = $_POST['admin'];
+                    if ($_SESSION['admin']) {
+                        header('location: index.php');
+                    }else{
+                        header('location: index.php'); 
+                    }
+                    exit();
+                }else{
+                    array_push($errors,"Account does not exits");
+                }
+            }
+        }
         
 
 ?>

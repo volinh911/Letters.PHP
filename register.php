@@ -36,7 +36,7 @@
 
     <div class="form">
       <img src="./images/register.svg" class="form__img" alt="">
-      <form action="login.php" class="form__content" method="POST">
+      <form action="register.php" class="form__content" method="POST">
         <h1 class="form__title">New here ?</h1>
         <?php if (!empty($errors)) : ?>
           <div class="msg error">
@@ -52,7 +52,7 @@
 
           <div class="form__div-input">
             <label for="username" class="form__label"></label>
-            <input type="text" name="username" class="form__input" placeholder="Username">
+            <input type="text" name="username" class="form__input" placeholder="Username" value="<?php echo $username; ?>">
           </div>
         </div>
 
@@ -62,7 +62,7 @@
           </div>
           <div class="form__div-input">
             <label for="email" class="form__label"></label>
-            <input type="email" name="email" class="form__input" placeholder="Email">
+            <input type="email" name="email" class="form__input" placeholder="Email" value="<?php echo $email; ?>">
           </div>
         </div>
 
@@ -72,7 +72,7 @@
           </div>
           <div class="form__div-input">
             <label for="password" class="form__label"></label>
-            <input type="password" name="password" class="form__input" placeholder="Password">
+            <input type="password" name="password" class="form__input" placeholder="Password" value="<?php echo $password; ?>">
           </div>
         </div>
         <input type="submit" class="form__button" name="register-btn">
