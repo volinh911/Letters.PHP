@@ -1,5 +1,5 @@
-<?php 
-    session_start();
+<?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +23,7 @@
 
     <title>Document</title>
     <link rel="stylesheet" href="css/main_page.css">
+    <link rel="shortcut icon" href="images/favicon_io/favicon.ico">
 </head>
 
 <body>
@@ -37,7 +38,7 @@
             <li><a href="register.php">Sign Up</a></li>
         </ul>
     </header>
-    
+
     <section class="main-banner">
         <h2 id="text"><span>It's time for a new</span><br>Adventure</h2>
         <img src="images/stars.png" id="stars" alt="">
@@ -160,10 +161,8 @@
                 <div class="col-8">
                     <h4 class="font-weight-bold">Learn anytime, anywhere..</h4>
                     <p class="py-4">Make your breaks and commutes more productive with our iPhone and Android apps. Download them and see why Apple and Google gave us their highest accolades.</p>
-                    <button type="button" class="btn btn-outline-dark">Download on <br><i
-                            class="fab fa-apple"></i></button>
-                    <button type="button" class="btn btn-outline-primary">Get it on <br><i
-                            class="fab fa-google-play"></i></button>
+                    <button type="button" class="btn btn-outline-dark">Download on <br><i class="fab fa-apple"></i></button>
+                    <button type="button" class="btn btn-outline-primary">Get it on <br><i class="fab fa-google-play"></i></button>
                 </div>
 
                 <div class="col-4">

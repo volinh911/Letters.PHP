@@ -1,3 +1,6 @@
+<?php
+include_once('./controllers/users.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,10 +17,10 @@
 <body>
 
     <input type="checkbox" id="nav-toggle">
-    <?php include_once ('./includes/dashboard_sidebar.php');?>
+    <?php include_once('./includes/dashboard_sidebar.php'); ?>
 
     <div class="main-content">
-        <?php include_once  ('./includes/dashboard_header.php'); ?>
+        <?php include_once('./includes/dashboard_header.php'); ?>
         <main>
             <!-- <div class="cards">
                 <div class="card-single">
@@ -66,10 +69,10 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Pacientes recientes</h3>
+                            <h3>Manage Users</h3>
 
-                            <button>Mostrar todo <span class="las la-arrow-right">
-                            </span></button>
+                            <button>Add new user <span class="las la-arrow-right">
+                                </span></button>
                         </div>
 
                         <div class="card-body">
@@ -79,119 +82,21 @@
                                         <tr>
                                             <td>SN</td>
                                             <td>Username</td>
-                                            <td>Estado</td>
-                                            <td>Estado</td>
-                                            <td>Estado</td>
+                                            <td>Status</td>
+                                            <td>Delete</td>
+                                            <td>Edit</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Jhon Deiby</td>
-                                            <td>Salazar Rayo</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Victor Manuel</td>
-                                            <td>Ciro Ledesma</td>
-                                            <td>
-                                                <span class="status red"></span> Malo
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Julian Andres</td>
-                                            <td>Quesada Carmona</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermedio
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Andres</td>
-                                            <td>Hernandez</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Manuel</td>
-                                            <td>Chicangana</td>
-                                            <td>
-                                                <span class="status red"></span> Malo
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Julieta</td>
-                                            <td>Quesad</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermedio
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Marleny</td>
-                                            <td>Salazar Orozco</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermedio
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kelly</td>
-                                            <td>Gil Ortiz</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bilma</td>
-                                            <td>Ortiz Bermudez</td>
-                                            <td>
-                                                <span class="status red"></span> Malo
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Julian Andres</td>
-                                            <td>Salazar Rayo</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermedio
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhonatan</td>
-                                            <td>Velazco</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermdio
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Samir</td>
-                                            <td>Vidal Carmona</td>
-                                            <td>
-                                                <span class="status green"></span> Bueno
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Karen</td>
-                                            <td>Orozco Sanches</td>
-                                            <td>
-                                                <span class="status red"></span> Malo
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Emiliano</td>
-                                            <td>Chicaganda</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermedio
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Jairo</td>
-                                            <td>Salazar Gallego</td>
-                                            <td>
-                                                <span class="status yellow"></span> Intermedio
-                                            </td>
-                                        </tr>
-
-
+                                        <?php foreach ($all_users as $key => $user) : ?>
+                                            <tr>
+                                                <td><?php echo $key + 1; ?></td>
+                                                <td><?php echo $user['username']; ?></td>
+                                                <td>
+                                                    <span class="status green"></span> Online
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -204,169 +109,34 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3>Nuevos pacientes</h3>
+                            <h3>Admins</h3>
 
-                            <button>Mostrar todo <span class="las la-arrow-right">
-                            </span></button>
+                            <!-- <button>Mostrar todo <span class="las la-arrow-right">
+                                </span></button> -->
                         </div>
 
                         <div class="card-body">
 
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="avatars/1.png" width="40px" height="40px" alt="">
-                                    <div>
-                                        <h4>Ana Maria Acosta</h4>
-                                        <small>Diarrea</small>
+                            <?php foreach ($all_admins as $key => $admin) : ?>
+                                <div class="customer ">
+                                    <div class="info ">
+                                        <img src="avatars/10.png " width="40px " height="40px " alt=" ">
+                                        <div>
+                                            <h4><?php echo $admin['username']; ?></h4>
+                                            <!-- <small>Khang</small> -->
+                                        </div>
+                                    </div>
+                                    <div class="contact ">
+                                        <span><i class="fas fa-user-minus"></i></span>
+                                        <span><i class="far fa-edit"></i> </span>
+                                        <span><i class="fas fa-phone-volume"></i></span>
                                     </div>
                                 </div>
-                                <div class="contact">
-                                    <span class="las la-user-circle"></span>
-                                    <span class="lab la-whatsapp"></span>
-                                    <span class="las la-phone"></span>
-                                </div>
-                            </div>
-
-                            <div class="customer">
-                                <div class="info">
-                                    <img src="avatars/2.png" 40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Karen Orozco</h4>
-                                        <small>Gripa</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/3.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Kelly Ortiz</h4>
-                                        <small>Intoxicación</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/4.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Julian Quesada</h4>
-                                        <small>Malestar general</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/5.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Nelson Stiven</h4>
-                                        <small>Bartolinitis</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/6.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Sara Cortez</h4>
-                                        <small>Acné</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/7.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Mario Ortiz</h4>
-                                        <small>Demencia</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/8.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Leopoldo Sas</h4>
-                                        <small>Eccema</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/9.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Stiven Alrboleda</h4>
-                                        <small>Encefalitis</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            <div class="customer ">
-                                <div class="info ">
-                                    <img src="avatars/10.png " width="40px " height="40px " alt=" ">
-                                    <div>
-                                        <h4>Brandon Carnadona</h4>
-                                        <small>Faringitis</small>
-                                    </div>
-                                </div>
-                                <div class="contact ">
-                                    <span class="las la-user-circle "></span>
-                                    <span class="lab la-whatsapp "></span>
-                                    <span class="las la-phone "></span>
-                                </div>
-                            </div>
-
-                            
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </main>
 

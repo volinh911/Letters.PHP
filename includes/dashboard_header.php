@@ -1,8 +1,8 @@
  <header>
      <h2>
          <label for="nav-toggle">
-             <span class="las la-bars"></span>
-         </label> 
+             <span><i class="fas fa-bars"></i></span>
+         </label>
      </h2>
 
      <!-- <div class="search-wrapper">

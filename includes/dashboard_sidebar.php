@@ -1,6 +1,6 @@
  <div class="sidebar">
      <div class="sidebar-brand">
-         <h2><span class="las la-clinic-medical"></span> <span>Letters</span></h2>
+         <h2><span>Letters</span></h2>
      </div>
      <!--Secciones-del-tablero-->
      <div class="sidebar-menu">
