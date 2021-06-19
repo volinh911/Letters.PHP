@@ -14,58 +14,12 @@
 <body>
 
     <input type="checkbox" id="nav-toggle">
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h2><span class="las la-clinic-medical"></span> <span>Hospital</span></h2>
-        </div>
-        <!--Secciones-del-tablero-->
-        <div class="sidebar-menu">
-            <ul>
-                <li>
-                    <a href="" class="active"> <span> <i class="fas fa-home"></i></span>
-                     <span> Home</span></a>
-                </li>
-                <li>
-                    <a href="" class="active" > <span><i class="fas fa-users"></i> </span>
-                     <span> Users </span></a>
-                </li>
-                <li>
-                    <a href="" class="active"> <span><i class="far fa-paper-plane"></i></span>
-                    <span>Posts</span></a>
-                </li>
-                <li>
-                    <a href="" class="active"> <span><i class="fas fa-sign-out-alt"></i></span>
-                    <span>Logout</span></a>
-                </li>
-               
-            </ul>
-        </div>
-    </div>
+    <?php include_once ('./includes/dashboard_sidebar.php');?>
 
     <div class="main-content">
-        <header>
-            <h2>
-                <label for="nav-toggle">
-                    <span class="las la-bars"></span>
-                </label> Tablero
-            </h2>
-
-            <!-- <div class="search-wrapper">
-                <span class="las la-search"></span>
-                <input type="search" placeholder="Buscar aquí" />
-            </div> -->
-            <div class="user-wrapper">
-                <img src="img/Avatar.png" width="40px" height="40px" alt="">
-                <div>
-                    <h4>Administrador</h4>
-                    <small>Super Admin</small>
-                </div>
-            </div>
-        </header>
-
+        <?php include_once  ('./includes/dashboard_header.php'); ?>
         <main>
-            <div class="cards">
-
+            <!-- <div class="cards">
                 <div class="card-single">
                     <div>
                         <h1>5</h1>
@@ -105,7 +59,7 @@
                         <span class="lab la-wpforms"></span>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!--Tabla-->
             <div class="recent-grid">
