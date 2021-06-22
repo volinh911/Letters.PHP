@@ -97,7 +97,7 @@
                 $stmt->execute();
                 
                 //log userin
-                $_SESSION['id']=$_POST['id'];
+                $_SESSION['user_id']=$_POST['user_id'];
                 $_SESSION['username']=$_POST['username'];
                 $_SESSION['admin']=$_POST['admin'];
                 // $_SESSION['message']="Logged in successfully";
@@ -112,7 +112,20 @@
             }
 
         }
-      
+
+            // function loginUser($user)
+            // {
+            //     $_SESSION['user_id '] = $user['user_id '];
+            //     $_SESSION['username'] = $user['username'];
+            //     $_SESSION['admin'] = $user['admin'];
+            //     if ($_SESSION['admin']) {
+            //         header("Location: dashboard.php");
+            //     } else {
+            //         header("Location: index.php");
+            //     }
+            //     exit();
+            // }
+
         if (isset($_POST['login-btn'])) {
             if (empty($_POST['username'])) {
                 array_push($errors,"Username is required");
@@ -125,13 +138,13 @@
                 $user=selectOne('users',['username'=>$_POST['username']]);
 
                 if ($user && password_verify($_POST['password'], $user['password'])) {
-                    $_SESSION['id'] = $_POST['id'];
-                    $_SESSION['username'] = $_POST['username'];
-                    $_SESSION['admin'] = $_POST['admin'];
+                    $_SESSION['user_id '] = $user['user_id '];
+                    $_SESSION['username'] = $user['username'];
+                    $_SESSION['admin'] = $user['admin'];
                     if ($_SESSION['admin']) {
-                        header('location: index.php');
-                    }else{
-                        header('location: index.php'); 
+                        header("Location: dashboard.php");
+                    } else {
+                        header("Location: index.php");
                     }
                     exit();
                 }else{

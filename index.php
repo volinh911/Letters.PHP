@@ -27,6 +27,12 @@ session_start();
 </head>
 
 <body>
+<?php 
+    // echo '<pre>';
+    // var_dump($_SESSION);
+    // echo '</pre>';
+  
+?>
     <header id="header">
         <a href="#" class="logo">Letters</a>
         <div class="toggle"></div>
@@ -34,8 +40,12 @@ session_start();
             <li><a href="#" class="active">Home</a></li>
             <li><a href="example.php">Scrambles</a></li>
             <li><a href="#">Community</a></li>
+            <?php if (isset($_SESSION['username'])) : ?>
+                <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
+            <?php endif; ?>
             <li><a href="login.php">Sign In</a></li>
             <li><a href="register.php">Sign Up</a></li>
+            
         </ul>
     </header>
 

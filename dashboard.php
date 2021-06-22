@@ -1,5 +1,7 @@
 <?php
-include_once('./controllers/users.php');
+    session_start();
+    include_once('./controllers/users.php');
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
