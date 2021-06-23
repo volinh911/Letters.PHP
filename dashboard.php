@@ -1,7 +1,8 @@
 <?php
-    session_start();
-    include_once('./controllers/users.php');
-    
+// session_start();
+include_once('./controllers/users.php');
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,15 @@
     <?php include_once('./includes/dashboard_sidebar.php'); ?>
 
     <div class="main-content">
-        <?php include_once('./includes/dashboard_header.php'); ?>
+        <?php
+        // echo '<pre>';
+        // var_dump($_SESSION);
+        // echo '</pre>';
+        ?>
+        <?php
+        include_once('./includes/dashboard_header.php');
+        ?>
+
         <main>
             <!-- <div class="cards">
                 <div class="card-single">
@@ -91,12 +100,22 @@
                                     </thead>
                                     <tbody>
                                         <?php foreach ($all_users as $key => $user) : ?>
+                                            <?php
+                                            $arr = array(
+                                                "green" => "Online",
+                                                "red" => "Offline"
+                                            );
+                                            $act = array_rand($arr, 1);
+                                            ?>
                                             <tr>
                                                 <td><?php echo $key + 1; ?></td>
                                                 <td><?php echo $user['username']; ?></td>
                                                 <td>
-                                                    <span class="status green"></span> Online
+                                                    <span class="status <?php echo $act; ?>"></span>
+                                                    <?php echo $arr[$act]; ?>
                                                 </td>
+                                                <td><a href="dashboard.php?delete_id=<?php echo $user['user_id']; ?>" class="delete">Delete</a></td>
+                                                <td class="edit">Edit</td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

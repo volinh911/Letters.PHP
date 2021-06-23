@@ -12,8 +12,10 @@
      <div class="user-wrapper">
          <img src="img/Avatar.png" width="40px" height="40px" alt="">
          <div>
-             <?php if (isset($_SESSION['username'])) : ?>
-                 <h4> <?php echo $_SESSION['username'];?></h4>
+             <?php if (($_SESSION['admin'] ==0)) : ?>
+                <h4>Super</h4>
+                <?php else:?>
+                    <h4> <?php echo $_SESSION['username'];?></h4>
              <?php endif; ?>
              <small>Super Admin</small>
          </div>

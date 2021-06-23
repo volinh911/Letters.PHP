@@ -268,15 +268,16 @@ tr td:last-child {
 }
 
 .status.green {
-    background: rgb(6, 192, 6);
+    background: cornflowerblue;
 }
-
-.status.yellow {
-    background: yellow;
-}
-
 .status.red {
-    background: red;
+    background: var(--text-grey);
+}
+.edit {
+    color: rgb(6, 192, 6);
+}
+.delete{
+    color: red;
 }
 
 .table-responsive {
