@@ -160,7 +160,6 @@
         }
         
         if (isset($_GET['delete_id'])) {
-                //$count = delete('users', $_GET['delete_id']);
                 $user_id=$_GET['delete_id'];
                 $sql="DELETE FROM users WHERE user_id= ?";
                 $stmt=$conn->prepare($sql);

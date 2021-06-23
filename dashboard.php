@@ -76,6 +76,7 @@ include_once('./controllers/users.php');
             </div> -->
 
             <!--Tabla-->
+            
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
@@ -127,24 +128,17 @@ include_once('./controllers/users.php');
                 </div>
 
                 <div class="customers">
-
                     <div class="card">
                         <div class="card-header">
                             <h3>Admins</h3>
-
-                            <!-- <button>Mostrar todo <span class="las la-arrow-right">
-                                </span></button> -->
                         </div>
-
                         <div class="card-body">
-
                             <?php foreach ($all_admins as $key => $admin) : ?>
                                 <div class="customer ">
                                     <div class="info ">
                                         <img src="avatars/10.png " width="40px " height="40px " alt=" ">
                                         <div>
                                             <h4><?php echo $admin['username']; ?></h4>
-                                            <!-- <small>Khang</small> -->
                                         </div>
                                     </div>
                                     <div class="contact ">
