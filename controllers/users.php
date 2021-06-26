@@ -1,6 +1,7 @@
 <?php
-         session_start();   
-         include_once("db.php");
+             session_start();
+            //  include_once ('./path.php');
+            include_once(ROOT_PATH . "/db.php");
             /*=== EXECUTE FUNCTION ===*/
             function executeQuery($sql, $data)
             {
@@ -149,7 +150,8 @@
                     $_SESSION['username']=$user['username'];
                     $_SESSION['admin']=$user['admin'];
                     if ($_SESSION['admin']) {
-                         header("Location: dashboard.php");
+                        
+                         header("Location: admin/dashboard.php");
                     }else{
                          header("Location: index.php");
                     }

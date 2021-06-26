@@ -1,4 +1,5 @@
 <?php
+include_once ('./path.php');
 include_once('./controllers/users.php');
 ?>
 

@@ -10,7 +10,7 @@
                 <input type="search" placeholder="Buscar aquí" />
             </div> -->
      <div class="user-wrapper">
-         <img src="img/Avatar.png" width="40px" height="40px" alt="">
+         <img src="/images/Avatar.png" width="40px" height="40px" alt="">
          <div>
              <?php if (($_SESSION['admin'] ==0)) : ?>
                 <h4>Super</h4>

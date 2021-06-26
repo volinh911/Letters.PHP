@@ -6,19 +6,20 @@
      <div class="sidebar-menu">
          <ul>
              <li>
-                 <a href="" class="active"> <span><i class="fas fa-users"></i> </span>
+             
+                 <a href="/admin/users/index.php" class="active"> <span><i class="fas fa-users"></i> </span>
                      <span> Users </span></a>
              </li>
              <li>
-                 <a href="" class="active"> <span><i class="far fa-paper-plane"></i></span>
+                 <a href="/admin/posts/index.php" class="active"> <span><i class="far fa-paper-plane"></i></span>
                      <span>Posts</span></a>
              </li>
              <li>
-                 <a href="index.php" class="active"> <span> <i class="fas fa-home"></i></span>
+                 <a href="../../index.php" class="active"> <span> <i class="fas fa-home"></i></span>
                      <span> Home</span></a>
              </li>
              <li>
-                 <a href="logout.php" class="active"> <span><i class="fas fa-sign-out-alt"></i></span>
+                 <a href="../../logout.php" class="active"> <span><i class="fas fa-sign-out-alt"></i></span>
                      <span>Logout</span></a>
              </li>
 
