@@ -1,7 +1,5 @@
 <?php
-    
-                                                                                                      include_once("./path.php");
-                                                                                                      include_once(ROOT_PATH . "/controllers/users.php");
+include_once("./path.php");                                                              include_once(ROOT_PATH . "/controllers/users.php");
 ?>
 
 <!DOCTYPE html>

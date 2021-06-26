@@ -1,6 +1,6 @@
 <?php
-    include_once('../../path.php');
-    include_once(ROOT_PATH . "/controllers/users.php");
+include_once('../../path.php');
+include_once(ROOT_PATH . "/controllers/users.php");
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +92,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      
+
                                     </tbody>
                                 </table>
                             </div>
@@ -110,15 +110,15 @@
                             <?php foreach ($all_admins as $key => $admin) : ?>
                                 <div class="customer ">
                                     <div class="info ">
-                                        <img src="./images/Avatar.png " width="40px " height="40px " alt=" ">
+                                        <img src="/images/Avatar.png " width="40px " height="40px " alt=" ">
                                         <div>
                                             <h4><?php echo $admin['username']; ?></h4>
                                         </div>
                                     </div>
                                     <div class="contact ">
-                                        <span><i class="fas fa-user-minus"></i></span>
-                                        <span><i class="far fa-edit"></i> </span>
-                                        <span><i class="fas fa-phone-volume"></i></span>
+                                        <span><i class="fas fa-comment-dots"></i></span>
+                                        
+                                        
                                     </div>
                                 </div>
                             <?php endforeach; ?>
