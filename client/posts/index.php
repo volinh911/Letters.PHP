@@ -1,7 +1,6 @@
 <?php
 include_once('../../path.php');
 include_once(ROOT_PATH . "/controllers/users.php");
-include_once(ROOT_PATH . "/controllers/posts.php");
 ?>
 
 <!DOCTYPE html>
@@ -118,8 +117,8 @@ include_once(ROOT_PATH . "/controllers/posts.php");
                                     </div>
                                     <div class="contact ">
                                         <span><i class="fas fa-comment-dots"></i></span>
-                                        
-                                        
+
+
                                     </div>
                                 </div>
                             <?php endforeach; ?>

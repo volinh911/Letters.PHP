@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,10 @@ session_start();
                 <?php if ($_SESSION['admin']) : ?>
                     <li><a href="./admin/dashboard.php">Dashboard</a></li>
                 <?php endif; ?>
-                    <li><a href="logout.php">Logout</a></li>
+                <?php if ($_SESSION['admin'] == 0) : ?>
+                    <li><a href="./client/user_dashboard.php">User Dashboard</a></li>
+                <?php endif; ?>
+                <li><a href="logout.php">Logout</a></li>
             <?php else : ?>
                 <li><a href="login.php">Sign In</a></li>
                 <li><a href="register.php">Sign Up</a></li>
