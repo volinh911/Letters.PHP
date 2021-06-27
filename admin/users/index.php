@@ -93,25 +93,26 @@ include_once(ROOT_PATH . '/controllers/users.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($all_users as $key => $user) : ?>
-                                            <?php
-                                            $arr = array(
-                                                "green" => "Online",
-                                                "red" => "Offline"
-                                            );
-                                            $act = array_rand($arr, 1);
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $key + 1; ?></td>
-                                                <td><?php echo $user['username']; ?></td>
-                                                <td>
-                                                    <span class="status <?php echo $act; ?>"></span>
-                                                    <?php echo $arr[$act]; ?>
-                                                </td>
-                                                <td><a href="dashboard.php?delete_id=<?php echo $user['user_id']; ?>" class="delete">Delete</a></td>
-                                                <td class="edit">Edit</td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                    <?php foreach ($all_users as $key => $user) : ?>
+                                        <?php
+                                        $arr = array(
+                                            "green" => "Online",
+                                            "red" => "Offline"
+                                        );
+                                        $act = array_rand($arr, 1);
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $key + 1; ?></td>
+                                            <td><?php echo $user['username']; ?></td>
+                                            <td>
+                                                <span class="status <?php echo $act; ?>"></span>
+                                                <?php echo $arr[$act]; ?>
+                                            </td>
+
+                                            <td><a href="index.php?delete_id=<?php echo $user['user_id']; ?>" class="delete">Delete</a></td>
+                                            <td class="edit">Edit</td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>

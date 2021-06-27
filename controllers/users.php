@@ -59,14 +59,7 @@
                     return $records;
                 }
             }
-            //DELETE FUNCTION
-            // function delete($table, $user_id)
-            // {
-            //     global $conn;
-            //     $sql = "DELETE FROM $table WHERE user_id=?";
-            //     $stmt = executeQuery($sql, ['user_id' => $user_id]);
-            //     return $stmt->affected_rows;
-            // }
+           
 
         $errors = [];
         $username="";
@@ -167,7 +160,7 @@
                 $stmt=$conn->prepare($sql);
                 $stmt->bind_param('i',$user_id);
                 $stmt->execute();
-                header("Location: " .  'dashboard.php');
+                header("Location: " .  '/admin/users/index.php');
                 exit();
         }
 ?>
