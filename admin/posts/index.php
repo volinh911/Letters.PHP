@@ -88,6 +88,7 @@ include_once(ROOT_PATH . "/controllers/posts.php");
                                         <tr>
                                             <td>SN</td>
                                             <td>Title</td>
+                                            <td>Author</td>
                                             <td>Delete</td>
                                             <td>Edit</td>
                                         </tr>
@@ -118,8 +119,6 @@ include_once(ROOT_PATH . "/controllers/posts.php");
                                     </div>
                                     <div class="contact ">
                                         <span><i class="fas fa-comment-dots"></i></span>
-                                        
-                                        
                                     </div>
                                 </div>
                             <?php endforeach; ?>

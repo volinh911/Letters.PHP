@@ -68,7 +68,7 @@
         $all_admins=selectAll('users',['admin'=>1]);
         $all_users=selectAll('users',['admin'=>0]);
         //==============REGISTER FUNCTION============
-        if (isset($_POST['register-btn'])) {
+        if (isset($_POST['register-btn']) || isset($_POST['add-user'])) {
             if (empty($_POST['username'])) {
                 array_push($errors, "Username is required");
             }
@@ -87,30 +87,50 @@
                 array_push($errors, 'Username already taken');
             }
             if (count($errors) === 0) {
-                unset($_POST['register-btn']);
-                $_POST['admin']=0;
-                $username = $_POST['username'];
-                $email = $_POST['email'];
-                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $admin=$_POST['admin'];
-                $sql = "INSERT INTO users (admin, username, email, password) VALUES (?,?,?,?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param('isss', $admin, $username, $email, $password);
-                $stmt->execute();
-                $_POST['user_id']=$stmt->insert_id;
-                //log userin
-                $_SESSION['user_id'] = $_POST['user_id'];
-                $_SESSION['username'] = $_POST['username'];
-                $_SESSION['admin'] = $_POST['admin'];
-                //var_dump($_SESSION);
-                header('location: index.php');
-                exit();
+                if (isset($_POST['register-btn'])) {
+                    unset($_POST['register-btn']);
+                    $_POST['admin'] = 0;
+                    $username = $_POST['username'];
+                    $email = $_POST['email'];
+                    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $admin = $_POST['admin'];
+                    $sql = "INSERT INTO users (admin, username, email, password) VALUES (?,?,?,?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param('isss', $admin, $username, $email, $password);
+                    $stmt->execute();
+                    $_POST['user_id'] = $stmt->insert_id;
+                    //log userin
+                    $_SESSION['user_id'] = $_POST['user_id'];
+                    $_SESSION['username'] = $_POST['username'];
+                    $_SESSION['admin'] = $_POST['admin'];
+                    header('location: index.php');
+                    exit();
+                }
+                else if(isset($_POST['add-user'])){
+                    unset($_POST['add-user']);
+                    $_POST['admin'] = 0;
+                    $username = $_POST['username'];
+                    $email = $_POST['email'];
+                    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    $admin = $_POST['admin'];
+                    $sql = "INSERT INTO users (admin, username, email, password) VALUES (?,?,?,?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param('isss', $admin, $username, $email, $password);
+                    $stmt->execute();
+                    // $_POST['user_id'] = $stmt->insert_id;
+                    // //log userin
+                    // $_SESSION['user_id'] = $_POST['user_id'];
+                    // $_SESSION['username'] = $_POST['username'];
+                    // $_SESSION['admin'] = $_POST['admin'];
+                    header('location: ./index.php');
+                    exit();
+                }
 
-            }else{
-                $username=$_POST['username'];
-                $email=$_POST['email'];
-                $password=$_POST['password'];
-            }
+                }else{
+                    $username=$_POST['username'];
+                    $email=$_POST['email'];
+                    $password=$_POST['password'];
+                }
 
         }
 

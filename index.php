@@ -31,7 +31,6 @@
     // echo '<pre>';
     // var_dump($_SESSION);
     // echo '</pre>';
-
     ?>
     <header id="header">
         <a href="#" class="logo">Letters</a>

@@ -16,6 +16,10 @@
                  </li>
              <?php else : ?>
                  <li>
+                     <a href="#" class="active"> <span><i class="fas fa-user-alt"></i></span>
+                         <span>Profile</span></a>
+                 </li>
+                 <li>
                      <a href="/client/posts/index.php" class="active"> <span><i class="far fa-paper-plane"></i></span>
                          <span>Posts</span></a>
                  </li>

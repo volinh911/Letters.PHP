@@ -17,63 +17,44 @@ include_once(ROOT_PATH . '/controllers/users.php');
 </head>
 
 <body>
-
+    
     <input type="checkbox" id="nav-toggle">
     <?php include_once('../../includes/dashboard_sidebar.php'); ?>
 
     <div class="main-content">
-
+        
         <?php
         include_once('../../includes/dashboard_header.php');
         ?>
 
         <main>
-
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Manage Users</h3>
-                            <a href="./create.php">
-                                <button>Add New User</button>
+                            <h3>Add User</h3>
+                            <a href="./index.php">
+                                <button>Manage User</button>
                             </a>
                         </div>
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table width="100%">
-                                    <thead>
-                                        <tr>
-                                            <td>SN</td>
-                                            <td>Username</td>
-                                            <td>Status</td>
-                                            <td>Delete</td>
-                                            <td>Edit</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($all_users as $key => $user) : ?>
-                                            <?php
-                                            $arr = array(
-                                                "green" => "Online",
-                                                "red" => "Offline"
-                                            );
-                                            $act = array_rand($arr, 1);
-                                            ?>
-                                            <tr>
-                                                <td><?php echo $key + 1; ?></td>
-                                                <td><?php echo $user['username']; ?></td>
-                                                <td>
-                                                    <span class="status <?php echo $act; ?>"></span>
-                                                    <?php echo $arr[$act]; ?>
-                                                </td>
-
-                                                <td><a href="index.php?delete_id=<?php echo $user['user_id']; ?>" class="delete">Delete</a></td>
-                                                <td class="edit">Edit</td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                <form action="./create.php" method="post">
+                                    <div>
+                                        <label for="username">Username</label><br>
+                                        <input type="text" name="username" id=""><br>
+                                    </div>
+                                    <div>
+                                        <label for="email">Email</label><br>
+                                        <input type="email" name="email" id=""><br>
+                                    </div>
+                                    <div>
+                                        <label for="password">Password</label><br>
+                                        <input type="password" name="password" id=""><br>
+                                    </div>
+                                    <button type="submit" name="add-user"> Add User</button>
+                                </form>
                             </div>
                         </div>
 
