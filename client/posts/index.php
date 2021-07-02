@@ -1,6 +1,6 @@
 <?php
-    include_once('../../path.php');
-    include_once(ROOT_PATH . "/controllers/users.php");
+include_once('../../path.php');
+include_once(ROOT_PATH . "/controllers/users.php");
 ?>
 
 <!DOCTYPE html>
@@ -28,56 +28,16 @@
         ?>
 
         <main>
-            <!-- <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1>5</h1>
-                        <span>Menejo de usuarios</span>
-                    </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>12</h1>
-                        <span>Menejo de doctores</span>
-                    </div>
-                    <div>
-                        <span class="las la-stethoscope"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>25</h1>
-                        <span>Manejo de pacientes</span>
-                    </div>
-                    <div>
-                        <span class="las la-wheelchair"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>2</h1>
-                        <span>Nuevas consultas</span>
-                    </div>
-                    <div>
-                        <span class="lab la-wpforms"></span>
-                    </div>
-                </div>
-            </div> -->
+           
 
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
                             <h3>Manage Posts</h3>
-
-                            <button>Add new post <span class="las la-arrow-right">
-                                </span></button>
+                            <a href="./create.php">
+                                <button>Add New User</button>
+                            </a>
                         </div>
 
                         <div class="card-body">

@@ -77,8 +77,9 @@ include_once(ROOT_PATH . "/controllers/posts.php");
                         <div class="card-header">
                             <h3>Manage Posts</h3>
 
-                            <button>Add new post <span class="las la-arrow-right">
-                                </span></button>
+                            <a href="#">
+                                <button>Add New User</button>
+                            </a>
                         </div>
 
                         <div class="card-body">

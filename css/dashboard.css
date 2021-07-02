@@ -298,9 +298,12 @@ form > div{
     margin-left: 10px;
     margin-top: 20px;
 }
+
+
+
 form button{
-     background: var(--main-color);
-    border-radius: 10px;
+    background: var(--main-color);
+    border-radius: 13px;
     color: #fff;
     font-size: .9rem;
     padding: .45rem 1rem;
@@ -340,6 +343,25 @@ form button{
     display: inline-block;
     margin-left: .5rem;
     color: var(--main-color);
+}
+.msg {
+  width: 100%;
+  margin: 5px auto;
+  padding: 8px;
+  border-radius: 5px;
+  list-style: none;
+}
+
+.success {
+  color: whitesmoke;
+  border: 1px solid #bcf5bc;
+  background:  #5cb85c;
+}
+
+.error {
+  color: whitesmoke;
+  border: 1px solid #d9534f;
+  background: #d9534f;
 }
 
 @media only screen and (max-width: 1200px) {

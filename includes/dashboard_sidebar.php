@@ -16,7 +16,7 @@
                  </li>
              <?php else : ?>
                  <li>
-                     <a href="#" class="active"> <span><i class="fas fa-user-alt"></i></span>
+                     <a href="/client/profile/index.php" class="active"> <span><i class="fas fa-user-alt"></i></span>
                          <span>Profile</span></a>
                  </li>
                  <li>

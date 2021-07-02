@@ -5,15 +5,18 @@
          </label>
      </h2>
 
-     <!-- <div class="search-wrapper">
-                <span class="las la-search"></span>
-                <input type="search" placeholder="Buscar aquí" />
-            </div> -->
+    <?php
+    $current_user = selectOne('users', ['user_id' => $_SESSION['user_id']]);
+    ?>
      <div class="user-wrapper">
          <?php if ($_SESSION['admin'] == 1) : ?>
              <img src="/images/Avatar.png" width="40px" height="40px" alt="">
          <?php else : ?>
-             <img src="/images/user.png" width="40px" height="40px" alt="">
+            <?php if (!empty($current_user['image_profile'])) : ?>
+                <img src="<?php echo  "/images/{$current_user['image_profile']}"; ?>" width="40px" height="40px" alt="">
+                <?php else:; ?>
+                <img src="/images/user.png" width="40px" height="40px" alt="">
+                <?php endif;?>
          <?php endif; ?>
          <div>
              <?php if (($_SESSION['admin'] == 0)) : ?>
