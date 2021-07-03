@@ -16,6 +16,8 @@
             <?php endif; ?>
             <li><a href="logout.php">Logout</a></li>
             <?php else : ?>
+            <li><a href="./game.php">Scrambles</a></li>
+            <li><a href="./posts.php">Community</a></li>
             <li><a href="login.php">Sign In</a></li>
             <li><a href="register.php">Sign Up</a></li>
             <?php endif; ?>
