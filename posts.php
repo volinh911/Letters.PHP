@@ -99,32 +99,32 @@
         <!--pagination-->
         <!--Pagination starts-->
         <nav>
-            <ul class="pagination justify-content-center mx-auto">
+            <ul class="justify-content-center page-nav">
                 <?php if($page == 1): ?>
-                <li class="page-item disabled" title="Previous">
-                    <a class="page-link m-2" href="posts.php?page=<?= $Previous; ?>">
-                        <i class="fas fa-chevron-left text-primary"></i></a>
+                <li class="disabled" title="Previous">
+                    <a href="posts.php?page=<?= $Previous; ?>">
+                        <i class="fas fa-chevron-left"></i></a>
                 </li>
                 <?php else: ?>
-                <li class="page-item" title="Previous">
-                    <a class="page-link m-2" href="posts.php?page=<?= $Previous; ?>">
-                        <i class="fas fa-chevron-left text-primary"></i></a>
+                <li title="Previous">
+                    <a href="posts.php?page=<?= $Previous; ?>">
+                        <i class="fas fa-chevron-left"></i></a>
                 </li>
                 <?php endif; ?>
 
                 <?php for($i = 1; $i<= $pages; $i++) : ?>
-                <li class="page-item"><a class="page-link m-2" href="posts.php?page=<?= $i; ?>"><?= $i; ?></a></li>
+                <li class="pageNumber"><a href="posts.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                 <?php endfor; ?>
 
                 <?php if($page < $pages): ?>
-                <li class="page-item" title="Next">
-                    <a class="page-link m-2" href="posts.php?page=<?= $Next; ?>">
-                        <i class="fas fa-chevron-right text-primary "></i></a>
+                <li title="Next">
+                    <a href="posts.php?page=<?= $Next; ?>">
+                        <i class="fas fa-chevron-right"></i></a>
                 </li>
                 <?php else: ?>
-                <li class="page-item disabled" title="Next">
-                    <a class="page-link m-2" href="posts.php?page=<?= $Next; ?>">
-                        <i class="fas fa-chevron-right text-primary "></i></a>
+                <li class="disabled" title="Next">
+                    <a href="posts.php?page=<?= $Next; ?>">
+                        <i class="fas fa-chevron-right"></i></a>
                 </li>
                 <?php endif; ?>
 
@@ -134,21 +134,7 @@
 
     </div>
     </div>
-
-  <!--pagination-->
-  <!--Pagination starts-->
-  <ul class="justify-content-center page-nav">
-    <li><a href=""><i class="fas fa-chevron-left"></i></a></li>
-    <li class="pageNumber active"><a href="">1</a></li>
-    <li class="pageNumber"><a href="">2</a></li>
-    <li class="pageNumber"><a href="">3</a></li>
-    <li class="pageNumber"><a href="">4</a></li>
-    <li class="pageNumber"><a href="">5</a></li>
-    <li><a href=""><i class="fas fa-chevron-right"></i></a></li>
-  </ul>
-
-  <!--pagination ends-->
-
+    
     <?php include_once('./includes/sub_footer.php'); ?>
 
 
