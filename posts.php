@@ -1,10 +1,3 @@
-<?php
-
-    include_once ('./path.php');
-    include_once (ROOT_PATH . '/controllers/posts.php');
-
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -33,12 +26,16 @@
 
 
 <body>
+  <img src="images/mountains_behind.png" id="mountains_behind" alt="">
+  <img src="images/mountains_front.png" id="mountains_front" alt="">
+
+  <?php include_once('./includes/sub_header.php'); ?>
+
   <div class="container-fluid">
-    <?php include_once('./includes/sub_header.php'); ?>
+    <h1 class="text-center">Posts</h1>
 
     <!-- forum titles placeholder -->
     <div class="container page-wrapper">
-
       <div class="table-row">
         <div class="subjects">
           <a href="">Is learning Python on 2021 worth it?</a>
@@ -73,33 +70,21 @@
 
     </div>
 
-    <!--pagination-->
-    <!--Pagination starts-->
-    <nav>
-      <ul class="pagination justify-content-center mx-auto">
-        <li class="page-item disabled" title="Previous">
-          <a class="page-link m-2" href="">
-            <i class="fas fa-chevron-left text-primary"></i></a>
-        </li>
-
-        <li class="page-item active"><a class="page-link  m-2" href="">1</a></li>
-        <li class="page-item"><a class="page-link m-2" href="">2</a></li>
-        <li class="page-item"><a class="page-link m-2" href="">3</a></li>
-        <li class="page-item"><a class="page-link m-2" href="">4</a></li>
-        <li class="page-item"><a class="page-link m-2" href="">5</a></li>
-
-        <li class="page-item" title="Next">
-          <a class="page-link m-2" href="">
-            <i class="fas fa-chevron-right text-primary "></i></a>
-        </li>
-
-      </ul>
-    </nav>
-    <!--pagination ends-->
-
-  </div>
   </div>
 
+  <!--pagination-->
+  <!--Pagination starts-->
+  <ul class="justify-content-center page-nav">
+    <li><a href=""><i class="fas fa-chevron-left"></i></a></li>
+    <li class="pageNumber active"><a href="">1</a></li>
+    <li class="pageNumber"><a href="">2</a></li>
+    <li class="pageNumber"><a href="">3</a></li>
+    <li class="pageNumber"><a href="">4</a></li>
+    <li class="pageNumber"><a href="">5</a></li>
+    <li><a href=""><i class="fas fa-chevron-right"></i></a></li>
+  </ul>
+
+  <!--pagination ends-->
 
   <?php include_once('./includes/sub_footer.php'); ?>
 
