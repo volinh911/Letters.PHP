@@ -20,12 +20,12 @@ footer i {
 
 /* background image */
 
-body img {
+body img#mountains_front, body img#mountains_behind {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: inherit;
+  height: max-content;
   object-fit: cover;
   pointer-events: none;
 }

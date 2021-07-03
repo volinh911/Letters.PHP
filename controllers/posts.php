@@ -57,6 +57,14 @@
               return $stmt->fetch_all(MYSQLI_ASSOC);
             }
         }
+
+        public function getPostsUser(){
+            $sql = "SELECT * FROM posts,users WHERE posts.user_id = users.user_id ORDER BY posts.date_created DESC";
+            $stmt = $this->conn->query($sql);
+            if($stmt->num_rows >= 1) {
+              return $stmt->fetch_all(MYSQLI_ASSOC);
+            }
+        }
         
         public function getPages(){
             $sql = "SELECT count(post_id) AS post_id FROM posts";
