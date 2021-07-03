@@ -9,10 +9,10 @@
     if ($page > 0) {
         $post = $posts->getPosts($page);
     }
-    //var_dump($post);
+    // var_dump($post);
     //get number of pages
     $pages = $posts->getPages();
-    var_dump($page);
+    // var_dump($page);
 
     #sigular Page
     $Previous = $page - 1;
@@ -74,7 +74,7 @@
             <?php foreach($post as $p) :  ?>
             <div class="table-row">
                 <div class="subjects">
-                    <a href=""><?php echo $p['title']; ?></a>
+                    <a href="detail.php?id=<?php echo $p['post_id'];?>"><?php echo $p['title']; ?></a>
                     <br>
                     <span>Started by <b><a href=""><?php echo $p['username']; ?></a></b> .</span>
                 </div>
