@@ -19,15 +19,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <title>Document</title>
-  <link rel="stylesheet" href="css/posts.css">
+  <link rel="stylesheet" href="css/community.css">
   <link rel="stylesheet" href="css/sub_header_footer_styles.css">
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico">
 </head>
 
 
 <body>
-  <?php include_once('./includes/sub_header.php'); ?>
-  <div class="container-fluid page-wrapper">
+  <div class="container-fluid">
+    <?php include_once('./includes/sub_header.php'); ?>
 
     <!-- forum titles placeholder -->
     <div class="container page-wrapper">
@@ -65,7 +65,31 @@
       </div>
 
     </div>
-    <!---->
+
+    <!--pagination-->
+    <!--Pagination starts-->
+    <nav>
+      <ul class="pagination justify-content-center mx-auto">
+        <li class="page-item disabled" title="Previous">
+          <a class="page-link m-2" href="">
+            <i class="fas fa-chevron-left text-primary"></i></a>
+        </li>
+
+        <li class="page-item active"><a class="page-link  m-2" href="">1</a></li>
+        <li class="page-item"><a class="page-link m-2" href="">2</a></li>
+        <li class="page-item"><a class="page-link m-2" href="">3</a></li>
+        <li class="page-item"><a class="page-link m-2" href="">4</a></li>
+        <li class="page-item"><a class="page-link m-2" href="">5</a></li>
+
+        <li class="page-item" title="Next">
+          <a class="page-link m-2" href="">
+            <i class="fas fa-chevron-right text-primary "></i></a>
+        </li>
+
+      </ul>
+    </nav>
+    <!--pagination ends-->
+
   </div>
   </div>
 
