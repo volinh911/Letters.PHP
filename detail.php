@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <title>Document</title>
-  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="css/community.css">
   <link rel="stylesheet" href="css/sub_header_footer_styles.css">
   <link rel="shortcut icon" href="images/favicon_io/favicon.ico">
 </head>
@@ -29,7 +29,7 @@
 
   <div class="container page-wrapper">
     <!--Navigation-->
-    <div class="div">
+    <div class="div m-3">
       <a href="posts.php">Back to Posts</a>
       <hr>
     </div>
@@ -67,7 +67,7 @@
     </div>
 
     <!--Comments Section-->
-    <div class="comments-container">
+    <div class="container comments py-5">
       <div class="body">
         <div class="authors">
           <div class="username"><a href="">AnotherUser</a></div>
@@ -83,6 +83,8 @@
           Nothing more and nothing less.
         </div>
       </div>
+      <hr>
+
 
       <div class="body">
         <div class="authors">
@@ -99,6 +101,7 @@
           Nothing more and nothing less.
         </div>
       </div>
+      <hr>
 
       <div class="body">
         <div class="authors">
@@ -115,11 +118,11 @@
           Nothing more and nothing less.
         </div>
       </div>
+      <hr>
     </div>
 
+
   </div>
-
-
 
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
