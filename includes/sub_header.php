@@ -1,7 +1,7 @@
 
     <!--===== HEADER =====-->
     <header id="header">
-        <a href="#" class="logo">Letters</a>
+        <a href="/index.php" class="logo">Letters</a>
         <div class="toggle"></div>
         <ul class="navigation">
             <li><a href="index.php" class="active">Home</a></li>

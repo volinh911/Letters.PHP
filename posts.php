@@ -135,6 +135,19 @@
     </div>
     </div>
 
+  <!--pagination-->
+  <!--Pagination starts-->
+  <ul class="justify-content-center page-nav">
+    <li><a href=""><i class="fas fa-chevron-left"></i></a></li>
+    <li class="pageNumber active"><a href="">1</a></li>
+    <li class="pageNumber"><a href="">2</a></li>
+    <li class="pageNumber"><a href="">3</a></li>
+    <li class="pageNumber"><a href="">4</a></li>
+    <li class="pageNumber"><a href="">5</a></li>
+    <li><a href=""><i class="fas fa-chevron-right"></i></a></li>
+  </ul>
+
+  <!--pagination ends-->
 
     <?php include_once('./includes/sub_footer.php'); ?>
 

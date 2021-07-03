@@ -57,9 +57,6 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     <div class="card">
                         <div class="card-header">
                             <h3 style="margin: auto;">User Profile</h3>
-                            <!-- <a href="./create.php">
-                                <button>Add New User</button>
-                            </a> -->
                         </div>
 
                         <div class="card-body">

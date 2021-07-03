@@ -6,7 +6,7 @@
      </h2>
 
     <?php
-    $current_user = selectOne('users', ['user_id' => $_SESSION['user_id']]);
+        $current_user = selectOne('users', ['user_id' => $_SESSION['user_id']]);
     ?>
      <div class="user-wrapper">
          <?php if ($_SESSION['admin'] == 1) : ?>

@@ -20,7 +20,7 @@ footer i {
 
 /* background image */
 
-body img#mountains_front, body img#mountains_behind {
+body img {
   position: absolute;
   top: 0;
   left: 0;
