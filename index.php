@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,8 @@
 
     <!--using FontAwesome--------------->
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>Document</title>
     <link rel="stylesheet" href="css/main_page.css">
@@ -27,30 +29,26 @@
 </head>
 
 <body>
-    <?php
-    // echo '<pre>';
-    // var_dump($_SESSION);
-    // echo '</pre>';
-    ?>
+
     <header id="header">
         <a href="#" class="logo">Letters</a>
         <div class="toggle"></div>
         <ul class="navigation">
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="index.php" class="active">Home</a></li>
             <li><a href="example.php">Scrambles</a></li>
-            <li><a href="#">Community</a></li>
+            <li><a href="posts.php">Community</a></li>
             <?php if (isset($_SESSION['user_id'])) : ?>
-                <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
-                <?php if ($_SESSION['admin']) : ?>
-                    <li><a href="./admin/dashboard.php">Dashboard</a></li>
-                <?php endif; ?>
-                <?php if ($_SESSION['admin'] == 0) : ?>
-                    <li><a href="./client/user_dashboard.php">User Dashboard</a></li>
-                <?php endif; ?>
-                <li><a href="logout.php">Logout</a></li>
+            <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
+            <?php if ($_SESSION['admin']) : ?>
+            <li><a href="./admin/dashboard.php">Dashboard</a></li>
+            <?php endif; ?>
+            <?php if ($_SESSION['admin'] == 0) : ?>
+            <li><a href="./client/user_dashboard.php">User Dashboard</a></li>
+            <?php endif; ?>
+            <li><a href="logout.php">Logout</a></li>
             <?php else : ?>
-                <li><a href="login.php">Sign In</a></li>
-                <li><a href="register.php">Sign Up</a></li>
+            <li><a href="login.php">Sign In</a></li>
+            <li><a href="register.php">Sign Up</a></li>
             <?php endif; ?>
         </ul>
     </header>
@@ -62,7 +60,11 @@
         <img src="images/mountains_behind.png" id="mountains_behind" alt="">
         <img src="images/mountains_front.png" id="mountains_front" alt="">
     </section>
-
+    <?php
+        // echo '<pre>';
+        //var_dump($_SESSION);
+        // echo '</pre>';
+    ?>
     <section class="intro">
         <div class="container">
             <div class="row">
@@ -72,7 +74,9 @@
 
                 <div class="col-8">
                     <h4 class="font-weight-bold">The best new way to learn English.</h4>
-                    <p class="py-4">Learning with Letters is fun and addictive. Earn points for correct answers, race against the clock, and level up. Our bite-sized lessons are effective, and we have proof that it works.
+                    <p class="py-4">Learning with Letters is fun and addictive. Earn points for correct answers, race
+                        against the clock, and level up. Our bite-sized lessons are effective, and we have proof that it
+                        works.
                     </p>
                     <a href="#" class="font-weight-bold"><i class="fas fa-caret-right"></i>SEE HOW WE DO IT</a>
                 </div>
@@ -92,7 +96,8 @@
                     <div class="card border-0" style="width: 18rem;">
                         <img class="card-img-top mx-auto" src="images/moon-2.png" alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text text-center font-weight-bolder">You bring the brains, <br> we’ll bring everything else</p>
+                            <p class="card-text text-center font-weight-bolder">You bring the brains, <br> we’ll bring
+                                everything else</p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +167,8 @@
 
                 <div class="col-8">
                     <h4 class="font-weight-bold">Boost your English with Letters.</h4>
-                    <p class="py-4">Learning English on Letters is completely free. Master any vocabulary or grammar, one success at a time.</p>
+                    <p class="py-4">Learning English on Letters is completely free. Master any vocabulary or grammar,
+                        one success at a time.</p>
                     <a href="#" class="font-weight-bold"><i class="fas fa-caret-right"></i>LEARN MORE ABOUT OUR
                         COMMUNITY</a>
                 </div>
@@ -176,9 +182,12 @@
             <div class="row">
                 <div class="col-8">
                     <h4 class="font-weight-bold">Learn anytime, anywhere..</h4>
-                    <p class="py-4">Make your breaks and commutes more productive with our iPhone and Android apps. Download them and see why Apple and Google gave us their highest accolades.</p>
-                    <button type="button" class="btn btn-outline-dark">Download on <br><i class="fab fa-apple"></i></button>
-                    <button type="button" class="btn btn-outline-primary">Get it on <br><i class="fab fa-google-play"></i></button>
+                    <p class="py-4">Make your breaks and commutes more productive with our iPhone and Android apps.
+                        Download them and see why Apple and Google gave us their highest accolades.</p>
+                    <button type="button" class="btn btn-outline-dark">Download on <br><i
+                            class="fab fa-apple"></i></button>
+                    <button type="button" class="btn btn-outline-primary">Get it on <br><i
+                            class="fab fa-google-play"></i></button>
                 </div>
 
                 <div class="col-4">
