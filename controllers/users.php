@@ -7,6 +7,7 @@
             $username="";
             $email="";
             $password="";
+            $user_id="";
             $all_admins=selectAll('users',['admin'=>1]);
             $all_users=selectAll('users',['admin'=>0]);
             // $current_user=selectOne('users',['user_id'=>$_SESSION['user_id']]);
@@ -122,14 +123,6 @@
                 if (empty($_POST['password'])) {
                     array_push($errors, "Password is required");
                 }
-                // $exstingEmail = selectOne('users', ['email' => $_POST['email']]);
-                // $exstingUser = selectOne('users', ['username' => $_POST['username']]);
-                // if ($exstingEmail) {
-                //     array_push($errors, 'Email already used');
-                // }
-                // if ($exstingUser) {
-                //     array_push($errors, 'Username already taken');
-                // }
                 if (!empty($_FILES['image']['name'])) {
                     $image_profile = time() . '_' . $_FILES['image']['name'];
                     $destination = ROOT_PATH . "/images/" . $image_profile;
@@ -141,20 +134,52 @@
                     }
                 }
                 if (count($errors)==0) {
-                    unset($_POST['edit-user-profile']);
-                    $userId=$_SESSION['user_id'];
-                    $username = $_POST['username'];
-                    $email = $_POST['email'];
-                    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                    $sql= "UPDATE users SET username=?, email=?, password= ?, image_profile=?
-                    WHERE user_id= ?";
-                    $stmt=$conn->prepare($sql);
-                    $stmt->bind_param("ssssi",$username,$email,$password,$image_profile,$userId);
-                    $stmt->execute();
-                    $_SESSION['message'] = 'Posts updated successfully';
-                    $_SESSION['type'] = 'success';
-                    header("Location: ./index.php");
+                    if (isset($_POST['edit-user-profile'])) {
+                        unset($_POST['edit-user-profile']);
+                        $userId = $_SESSION['user_id'];
+                        $username = $_POST['username'];
+                        $email = $_POST['email'];
+                        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $sql = "UPDATE users SET username=?, email=?, password= ?, image_profile=? WHERE user_id= ?";
+                        $stmt = $conn->prepare($sql);
+                        $stmt->bind_param("ssssi", $username, $email, $password, $image_profile, $userId);
+                        $stmt->execute();
+                        $_SESSION['message'] = 'Users profile updated successfully';
+                        $_SESSION['type'] = 'success';
+                        header("Location: ./index.php");
+                    }
+                    
 
                 }
             }
-    ?>
+            
+            if (isset($_GET['edit_id'])) {
+                $user=selectOne('users',['user_id'=>$_GET['edit_id']]);
+                $user_id=$user['user_id'];
+            }
+                if (isset($_POST['update-user'])) {
+                    if (empty($_POST['username'])) {
+                        array_push($errors, "Username is required");
+                    }
+                    if (empty($_POST['email'])) {
+                        array_push($errors, "Email is required");
+                    }
+                    if (empty($_POST['password'])) {
+                        array_push($errors, "Password is required");
+                    }
+                    if (count($errors)==0) {
+                        $user_id = $_POST['user_id'];
+                        unset($_POST['update-user'], $_POST['user_id']);
+                        $username = $_POST['username'];
+                        $email = $_POST['email'];
+                        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        // $user_ID = update('users', $user_id, $_POST);
+                        $sql= "UPDATE users SET username= ?, email= ?, password= ? WHERE user_id= ?";
+                        $stmt=$conn->prepare($sql);
+                        $stmt->bind_param("sssi",$username,$email,$password,$user_id);
+                        $stmt->execute();
+                        $_SESSION['message'] = 'Users updated successfully';
+                        $_SESSION['type'] = 'success';
+                        header("Location: ./index.php");
+                    }
+                }

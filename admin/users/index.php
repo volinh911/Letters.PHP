@@ -38,6 +38,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     ?>
                 </div>
             <?php endif; ?>
+            
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
@@ -78,6 +79,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                                                 </td>
 
                                                 <td><a href="index.php?delete_id=<?php echo $user['user_id']; ?>" class="delete">Delete</a></td>
+                                                
                                                 <td><a href="edit.php?edit_id=<?php echo $user['user_id']; ?>" class="edit">Edit</a></td>
 
                                             </tr>

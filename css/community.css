@@ -6,14 +6,36 @@
 
 .page-wrapper {
   min-height: calc(100vh - 108px - 127px);
+  z-index: 10;
 }
 
 header {
   position: unset!important;
+  background-color: #fff;
 }
 
 footer i {
   font-size: 2rem;
+}
+
+/* background image */
+
+body img#mountains_front, body img#mountains_behind {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: max-content;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+body img#mountains_front {
+  z-index: -1;
+}
+
+body img#mountains_behind {
+  z-index: -2;
 }
 
 /* ########################################### */
@@ -22,49 +44,20 @@ footer i {
 
 /* ########################################### */
 
-.table-head {
-  display: flex;
-}
-
-.table-head div {
-  padding: 5px;
-  margin: 2px;
-  /* background-color: #130c0c; */
-  font-weight: bold;
-}
-
-.table-head .status {
-  flex: 5%;
-}
-
-.table-head .subjects {
-  flex: 70%;
-}
-
-.table-head .replies {
-  flex: 10%;
-}
-
-.table-head .last-reply {
-  flex: 15%;
-}
-
 /* posts table's body  */
 
 .table-row {
+  background: #fff;
   display: flex;
+  margin: 2rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
 }
 
 .table-row .status, .table-row .subjects, .table-row .replies, .table-row .last-reply {
-  padding: 5px;
+  padding: 20px;
   margin: 2px;
   /* background-color: #131415; */
-}
-
-.table-row .status {
-  flex: 5%;
-  font-size: 30px;
-  text-align: center;
 }
 
 .table-row .subjects {
@@ -79,35 +72,40 @@ footer i {
   flex: 15%;
 }
 
-/* navigation path*/
-
-.navigate {
-  margin-block: 20px;
-  font-weight: lighter;
-  font-size: 24px;
-}
-
-.navigate a {
-  color: #fff;
-}
-
-.navigate a:hover {
-  color: #FF0042;
-  font-weight: bolder;
-}
-
 /* Pagination*/
 
-.pagination {
-  padding: 20px;
-  font-size: 4rem;
+ul.page-nav {
+  position: relative;
+  background-color: #fff;
+  display: flex;
+  padding: 10px 20px;
+  margin: 0;
 }
 
-.pagination li a {
+ul.page-nav li {
+  list-style: none;
+  line-height: 50px;
+  margin: 0 5px;
+}
+
+ul.page-nav li.pageNumber {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+ul.page-nav li a {
   display: block;
   text-decoration: none;
+  color: #2b1055;
   font-weight: 600;
   border-radius: 50%;
+}
+
+ul.page-nav li.pageNumber:hover a, ul.page-nav li.pageNumber.active a {
+  background: #2b1055;
+  color: #fff;
 }
 
 .note {
@@ -154,7 +152,7 @@ footer i {
   font-size: 20px;
 }
 
-.body .authors img {
+.body .authors img#avatar {
   max-width: 50px;
   max-height: 80px;
 }

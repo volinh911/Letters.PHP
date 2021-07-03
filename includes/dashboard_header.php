@@ -6,16 +6,16 @@
      </h2>
 
     <?php
-    $current_user = selectOne('users', ['user_id' => $_SESSION['user_id']]);
+        $current_user = selectOne('users', ['user_id' => $_SESSION['user_id']]);
     ?>
      <div class="user-wrapper">
          <?php if ($_SESSION['admin'] == 1) : ?>
-             <img src="/images/Avatar.png" width="40px" height="40px" alt="">
+             <img src="../images/Avatar.png" width="40px" height="40px" alt="">
          <?php else : ?>
             <?php if (!empty($current_user['image_profile'])) : ?>
-                <img src="<?php echo  "/images/{$current_user['image_profile']}"; ?>" width="40px" height="40px" alt="">
+                <img src="<?php echo  "../images/{$current_user['image_profile']}"; ?>" width="40px" height="40px" alt="">
                 <?php else:; ?>
-                <img src="/images/user.png" width="40px" height="40px" alt="">
+                <img src="../images/user.png" width="40px" height="40px" alt="">
                 <?php endif;?>
          <?php endif; ?>
          <div>
