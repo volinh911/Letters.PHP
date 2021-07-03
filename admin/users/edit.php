@@ -29,12 +29,12 @@ include_once(ROOT_PATH . '/controllers/users.php');
 
         <main>
             <?php
-           
+
             // echo '<pre>';
             // var_dump($_POST);
             // echo '</pre>';
 
-            
+
             ?>
             <div class="recent-grid">
                 <div class="projects">
@@ -70,7 +70,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     </div>
                 </div>
 
-                <div class="customers">
+                <!-- <div class="customers">
                     <div class="card">
                         <div class="card-header">
                             <h3>Admins</h3>
@@ -83,16 +83,45 @@ include_once(ROOT_PATH . '/controllers/users.php');
                                         <div>
                                             <h4><?php echo $admin['username']; ?></h4>
                                         </div>
-                                    </div>
-                                    <div class="contact ">
-                                        <span><i class="fas fa-comment-dots"></i></span>
+                                        <div class="contact ">
+                                            <span><i class="fas fa-comment-dots"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
+                <div class="customers">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Admins</h3>
+                        </div>
+                        <div class="card-body">
+                            <?php foreach ($all_admins as $key => $admin) : ?>
+                                <div class="customer ">
+                                    <div class="info ">
+                                        <?php if (!empty($admin['image_profile'])) : ?>
+                                            <img src="<?php echo  "/images/{$admin['image_profile']}"; ?> " width="40px " height="40px " alt=" ">
+                                            <div>
+                                            <?php else : ?>
+                                                <img src="/images/Avatar.png " width="40px " height="40px " alt=" ">
+                                                <div>
+                                                <?php endif; ?>
+                                                <h4><?php echo $admin['username']; ?></h4>
+                                                </div>
+                                            </div>
+                                            <div class="contact ">
+                                                <span><i class="fas fa-comment-dots"></i></span>
+                                            </div>
+                                    </div>
+                                <?php endforeach; ?>
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </main>
 

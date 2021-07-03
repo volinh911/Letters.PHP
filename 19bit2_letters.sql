@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2021 at 11:45 AM
+-- Generation Time: Jul 03, 2021 at 02:51 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -74,6 +74,7 @@ CREATE TABLE `users` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `image_profile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -81,17 +82,17 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `admin`, `username`, `email`, `password`, `date_created`) VALUES
-(1, 1, '1959009', 'khangng2001@gmail.com', '$2y$10$3UIgo0rk9txSTsoKPmtcPOg.MiNL5PNqbSYlZVe3K/Sm//KqJzJaO', '2021-06-13 15:47:04'),
-(2, 1, '1959043', '1959043@itec.hcmus.edu.vn', '$2y$10$0K/WoEHxM.yJCs/jPHqoA.s40zFmXgy/z/pOBOQzce1xhzGGyH19i', '2021-06-13 15:49:23'),
-(3, 0, '1959001', '1959001@itec.hcmus.edu.vn', '$2y$10$By1ws0DULG26F5PuPZuGCOgHeypt.DUQ7gOPLvkgnfBkbel8Owgli', '2021-06-13 15:54:30'),
-(5, 1, '1959013', '1959013@itec.hcmus.edu.vn', '$2y$10$1Kn.Lwq987FP.nY23L0p3utlUILxCK0cxZYQ14lmxwujVSiOupxq6', '2021-06-17 10:41:37'),
-(6, 1, '1959029', '1959029@itec.hcmus.edu.vn', '$2y$10$Z14llsAhVbVQ1tu.baDzo.Nqj.E705x7HcDS7d8kP0GPTaeL.Sxb6', '2021-06-17 13:47:09'),
-(7, 0, '1959018', '1959018@itec.hcmus.edu.vn', '$2y$10$qF3UKVrYwGJ2vlNl4HQx8OGCpJQDpsmidecPibEBsmph6ABYOkWNq', '2021-06-23 09:51:08'),
-(8, 0, '1959039', '1959039@itec.hcmus.edu.vn', '$2y$10$PrOVxjGpo1ZaJMyh6XVK5.iDNokQin51h8bpkE0hVzMM95lDCmtFS', '2021-06-23 09:55:43'),
-(9, 0, '1959004', '1959004@itec.hcmus.edu.vn', '$2y$10$w5BRlD8KTPvLafjdexSK5OxLxN7jHNTscvS8aNUCwA6M7IKSE/JBe', '2021-06-23 10:02:50'),
-(10, 0, '1959003', '1959003@itec.hcmus.edu.vn', '$2y$10$ontsbT1IXcuHp09/bKzoreaCIlAKiAL1pVIuNC21oFEyCqs34HLVW', '2021-06-23 10:03:54'),
-(11, 0, '1959005', '1959005@itec.hcmus.edu.vn', '$2y$10$lHNUvuK0YaYpejhJ7JH8teCmI6r6MVAK5YW.Zdse7SxLtgh9vWgoC', '2021-06-23 10:11:39');
+INSERT INTO `users` (`user_id`, `admin`, `username`, `email`, `password`, `image_profile`, `date_created`) VALUES
+(1, 1, '1959009', 'khangng2001@gmail.com', '$2y$10$3UIgo0rk9txSTsoKPmtcPOg.MiNL5PNqbSYlZVe3K/Sm//KqJzJaO', '', '2021-06-13 15:47:04'),
+(2, 1, '1959043', '1959043@itec.hcmus.edu.vn', '$2y$10$0K/WoEHxM.yJCs/jPHqoA.s40zFmXgy/z/pOBOQzce1xhzGGyH19i', '', '2021-06-13 15:49:23'),
+(5, 1, '1959013', '1959013@itec.hcmus.edu.vn', '$2y$10$1Kn.Lwq987FP.nY23L0p3utlUILxCK0cxZYQ14lmxwujVSiOupxq6', '', '2021-06-17 10:41:37'),
+(6, 1, '1959029', '1959029@itec.hcmus.edu.vn', '$2y$10$Z14llsAhVbVQ1tu.baDzo.Nqj.E705x7HcDS7d8kP0GPTaeL.Sxb6', '', '2021-06-17 13:47:09'),
+(15, 0, '1959026', '1959026@itec.hcmus.edu.vn', '$2y$10$TVpyNsYbp61xvX9y3so38utSXqm4NHoYsJrIWkGe35Mmamq3iwXAm', '', '2021-06-26 11:54:45'),
+(19, 0, '1959020', '1959020@itec.hcmus.edu.vn', '$2y$10$.A.0UFVCLYLsVa4kQBCnfe10aTdkXd5aQwZPKxY1YEAk3w219joha', '1625283417_zura.png', '2021-06-28 19:13:48'),
+(20, 0, '1959014', '1959014@itec.hcmus.edu.vn', '$2y$10$iYStKWI3MGEQ1f9E4ecOZu5.pRjvcx/5aHvjb2zcUsl7UB4e9SWfW', '1625215640_zura.png', '2021-06-28 19:35:05'),
+(21, 0, '1959002', '1959002@itec.hcmus.edu.vn', '$2y$10$/YKPIAsCoLf484uH.BxIhu1zb.YKIkMvQChz3dfZiBi48uqUE9FuO', '1625301015_Zurasanta.jpg', '2021-06-28 21:26:58'),
+(22, 0, '1959024', '1959024@itec.hcmus.edu.vn', '$2y$10$vybycvYWRPn/6NmI3QcedOKxzsh31EEcpM5hG.IVg.2yLquzY/y9K', '', '2021-06-28 21:46:41'),
+(23, 0, '1959033', '1959033@itec.hcmus.edu.vn', '$2y$10$5BN6GUClJiklppUveLHqMOHtzukeBabpR1gnaf2Uoxx0WWWywZrvK', '', '2021-06-28 21:49:01');
 
 -- --------------------------------------------------------
 
@@ -165,7 +166,7 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `words`

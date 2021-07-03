@@ -17,12 +17,12 @@ include_once(ROOT_PATH . '/controllers/users.php');
 </head>
 
 <body>
-    
+
     <input type="checkbox" id="nav-toggle">
     <?php include_once('../../includes/dashboard_sidebar.php'); ?>
 
     <div class="main-content">
-        
+
         <?php
         include_once('../../includes/dashboard_header.php');
         ?>
@@ -61,6 +61,8 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     </div>
                 </div>
 
+             
+
                 <div class="customers">
                     <div class="card">
                         <div class="card-header">
@@ -70,20 +72,26 @@ include_once(ROOT_PATH . '/controllers/users.php');
                             <?php foreach ($all_admins as $key => $admin) : ?>
                                 <div class="customer ">
                                     <div class="info ">
-                                        <img src="/images/Avatar.png " width="40px " height="40px " alt=" ">
-                                        <div>
-                                            <h4><?php echo $admin['username']; ?></h4>
-                                        </div>
+                                        <?php if (!empty($admin['image_profile'])) : ?>
+                                            <img src="<?php echo  "/images/{$admin['image_profile']}"; ?> " width="40px " height="40px " alt=" ">
+                                            <div>
+                                            <?php else : ?>
+                                                <img src="/images/Avatar.png " width="40px " height="40px " alt=" ">
+                                                <div>
+                                                <?php endif; ?>
+                                                <h4><?php echo $admin['username']; ?></h4>
+                                                </div>
+                                            </div>
+                                            <div class="contact ">
+                                                <span><i class="fas fa-comment-dots"></i></span>
+                                            </div>
                                     </div>
-                                    <div class="contact ">
-                                        <span><i class="fas fa-comment-dots"></i></span>
-                                    </div>
+                                <?php endforeach; ?>
                                 </div>
-                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </main>
 

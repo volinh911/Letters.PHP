@@ -38,7 +38,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     ?>
                 </div>
             <?php endif; ?>
-            
+
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
@@ -79,7 +79,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                                                 </td>
 
                                                 <td><a href="index.php?delete_id=<?php echo $user['user_id']; ?>" class="delete">Delete</a></td>
-                                                
+
                                                 <td><a href="edit.php?edit_id=<?php echo $user['user_id']; ?>" class="edit">Edit</a></td>
 
                                             </tr>
@@ -102,21 +102,26 @@ include_once(ROOT_PATH . '/controllers/users.php');
                             <?php foreach ($all_admins as $key => $admin) : ?>
                                 <div class="customer ">
                                     <div class="info ">
-                                        <img src="/images/Avatar.png " width="40px " height="40px " alt=" ">
-                                        <div>
-                                            <h4><?php echo $admin['username']; ?></h4>
-                                        </div>
+                                        <?php if (!empty($admin['image_profile'])) : ?>
+                                            <img src="<?php echo  "/images/{$admin['image_profile']}"; ?> " width="40px " height="40px " alt=" ">
+                                            <div>
+                                            <?php else : ?>
+                                                <img src="/images/Avatar.png " width="40px " height="40px " alt=" ">
+                                                <div>
+                                                <?php endif; ?>
+                                                <h4><?php echo $admin['username']; ?></h4>
+                                                </div>
+                                            </div>
+                                            <div class="contact ">
+                                                <span><i class="fas fa-comment-dots"></i></span>
+                                            </div>
                                     </div>
-                                    <div class="contact ">
-                                        <span><i class="fas fa-comment-dots"></i></span>
-                                    </div>
+                                <?php endforeach; ?>
                                 </div>
-                            <?php endforeach; ?>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
         </main>
 
 
