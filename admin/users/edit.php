@@ -28,6 +28,14 @@ include_once(ROOT_PATH . '/controllers/users.php');
         ?>
 
         <main>
+            <?php
+           
+            // echo '<pre>';
+            // var_dump($_POST);
+            // echo '</pre>';
+
+            
+            ?>
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
@@ -40,7 +48,8 @@ include_once(ROOT_PATH . '/controllers/users.php');
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form action="./edit.php" method="post">
+                                <form action="edit.php" method="post">
+                                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                     <div>
                                         <label for="username">Username</label><br>
                                         <input type="text" name="username" id=""><br>
