@@ -173,12 +173,13 @@
                         $username = $_POST['username'];
                         $email = $_POST['email'];
                         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                        $user_ID = update('users', $user_id, $_POST);
+                        // $user_ID = update('users', $user_id, $_POST);
+                        $sql= "UPDATE users SET username= ?, email= ?, password= ? WHERE user_id= ?";
+                        $stmt=$conn->prepare($sql);
+                        $stmt->bind_param("sssi",$username,$email,$password,$user_id);
+                        $stmt->execute();
                         $_SESSION['message'] = 'Users updated successfully';
                         $_SESSION['type'] = 'success';
                         header("Location: ./index.php");
                     }
                 }
-
-            
-    ?>
