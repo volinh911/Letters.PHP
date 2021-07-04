@@ -1,13 +1,19 @@
 <?php 
     session_start();
     include_once(ROOT_PATH . "/db.php");
-
     class Post{
         protected $post_id;
         protected $user_id;
         protected $post_title;
         protected $post_content;
         protected $date_created;
+        protected $fileNameNew;
+        protected $fileTmpName;
+        protected $fileSize;
+        protected $fileError;
+        protected $fileActualExt;
+        protected $filenalDestination;
+        protected $allowed;
         public $errors = [];
         public $conn;
     
@@ -85,8 +91,55 @@
                 return ceil($total/ $limit);
             }
         }
+        // function fileCheck($fileTmpName, $fileSize, $fileError, $fileActualExt, $allowed, $conn){
+        
+        //     if(in_array($fileActualExt, $allowed)){
+        //         if($fileError === 0){
+        //             if($fileSize < 10000000){
+        //                 $fileNameNew = uniqid('',true).".".$fileActualExt;
+        //                 $filenalDestination = './user_images/'.$fileNameNew;
+        //                 move_uploaded_file($fileTmpName, $filenalDestination);
+        //             }
+        //             else{
+        //                 header("Location: create.php?error=Your file is too fat, just like me");
+        //                 exit();
+        //             }
+        //         }
+        //         else{
+        //             header("Location: create.php?error=Error uploading file");
+        //             exit();
+        //         }
+        //     }
+        //     else{
+        //             $error['idk'] = "error";
+        //     }
+        //     if(empty($title)){
+        //         header("Location: create.php?error=Title is empty");
+        //         exit();
+        //     }
+        //     else if(!empty($error['idk'])){
+        //         header("Location: create.php?error=Image is empty or you upload something other than image");
+        //         exit();
+        //     }
+        //     else if(empty($content)){
+        //         header("Location: create.php?error=Content is empty");
+        //         exit();
+        //     }
+        //     else{
+        //         $sql = "INSERT INTO posts (user_id, title, image, content) VALUES (?,?,?,?)";
+        //         $stmt = $conn->prepare($sql);
+        //         $stmt->bind_param("isss", $userid, $title, $filenalDestination, $content);
+        //         $stmt->execute();
+        //         if ($stmt->affected_rows == 1) {
+        //             $post_id = $stmt->insert_id;
+        //             $location = "post.php?id=$post_id&new=true";
+        //             header("Location: $location");
+        //             exit();
+        //         }
+        //     }
+        // }
 
-        public function checkNewPost($user_id,$post_title, $post_content){
+        public function checkNewPost($user_id,$post_title, $post_content,$fileTmpName, $fileSize, $fileError, $fileActualExt, $allowed){
             $this->user_id = $user_id;
             $this->post_title = $post_title;
             $this->post_content = $post_content;
@@ -96,15 +149,38 @@
             if(strlen($this->post_content) < 10){
                 $this->errors['post-content'] = "Your content must longer than 20 words";
             }
+            $this->fileTmpName = $fileTmpName;
+            $this->fileSize = $fileSize;
+            $this->fileError = $fileError;
+            $this->fileActualExt = $fileActualExt;
+            $this->allowed = $allowed;
+
+            if(in_array($this->fileActualExt, $this->allowed)){
+                if($this->fileError === 0){
+                    if($this->fileSize < 10000000 && $this->fileSize > 1){
+                        $this->fileNameNew = uniqid('',true).".".$this->fileActualExt;
+                        $this->filenalDestination = './images/'.$this->fileNameNew; 
+                        move_uploaded_file($this->fileTmpName, $this->filenalDestination);
+                    }
+                    else{
+                        $this->errors['file-big'] = "Your file is too fat, or you haven't upload anything";
+                    }
+                }
+                else{
+                    $this->errors['file-error'] = "Error uploading file";
+                }
+            }else{
+                $this->errors['idfk']= "Problem with file";
+            }
             if(empty($this->errors)){
                 $this->createPost();
             }
         }
     
         public function createPost(){
-            $sql = "INSERT INTO posts (user_id, title, content) VALUES (?,?,?)";
+            $sql = "INSERT INTO posts (user_id, title, image, content) VALUES (?,?,?,?)";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bind_param("iss", $this->user_id, $this->post_title, $this->post_content);
+            $stmt->bind_param("isss", $this->user_id, $this->post_title, $this->filenalDestination, $this->post_content);
             $stmt->execute();
             if($stmt->affected_rows == 1){
                 header("Location: posts.php?success");
@@ -254,4 +330,22 @@
         }
 
     }
-    ?>
+
+?>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <img src="../images/ava" alt="">
+</body>
+
+</html> -->

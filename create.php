@@ -23,8 +23,18 @@ if (isset($_POST['add-post'])) {
     $user_id = $_SESSION['user_id'];
     $post_title = $_POST['title'];
     $post_content = $_POST['content'];
+    $file = $_FILES['imgurl'];
+    // var_dump($_FILES);
+    $fileName = $file['name'];
+    $fileTmpName = $file['tmp_name'];
+    $fileSize = $file['size'];
+    $fileError = $file['error'];
+    $fileType = $file['type'];
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+    $allowed = array('jpg', 'jpeg', 'png');
 
-    $post->checkNewPost($user_id, $post_title, $post_content);
+    $post->checkNewPost($user_id, $post_title, $post_content,$fileTmpName, $fileSize, $fileError, $fileActualExt, $allowed);
     $errors = $post->errors;
 }
 
@@ -35,6 +45,8 @@ if(isset($_POST['edit-post'])){
 
     $post->editPost($post_id, $post_title, $post_content);
 }
+
+
 
 ?>
 
@@ -66,7 +78,7 @@ if(isset($_POST['edit-post'])){
 
 <body>
     <div class="container">
-    <!-- Khong log in khong dang bai -->
+        <!-- Khong log in khong dang bai -->
         <?php if (!isset($_SESSION["user_id"])):?>
         <div class="mt-5 col-md-6 offset-md-3 text-center">
             <h2 class="display-5">Please Login to Post!</h2>
@@ -75,8 +87,8 @@ if(isset($_POST['edit-post'])){
                         class="fas fa-sign-in-alt"></i> Create Account/Login</a> </button>
         </div>
         <?php else:?>
-    
-    <!-- Bao loi neu co -->
+
+        <!-- Bao loi neu co -->
         <?php if (isset($errors) && !empty($errors)): ?>
         <div class="alert alert-danger" role="alert">
             <?php foreach ($errors as $error): ?>
@@ -85,7 +97,7 @@ if(isset($_POST['edit-post'])){
         </div>
         <?php endif; ?>
 
-        <form action="create.php" method="POST">
+        <form action="create.php" method="POST" enctype="multipart/form-data">
             <?php if (isset($_GET['error'])) {?>
             <div class=" rs2-wrap-input100 m-b-20">
                 <p class="error text-center" style="color: red;"><?php echo $_GET['error'];?></p>
@@ -95,19 +107,27 @@ if(isset($_POST['edit-post'])){
             <!-- In nhung thu can thiet -->
             <div class="form-group">
                 <label for="title">Post Title</label>
-                <input type="text" value="<?php echo $postTitle;?>" class="form-control" name="title" placeholder="Your post title">
+                <input type="text" value="<?php echo $postTitle;?>" class="form-control" name="title"
+                    placeholder="Your post title">
             </div>
             <div class="form-group">
                 <label for="content">Post Content</label>
-                <textarea class="form-control" name="content" rows="3" placeholder="Your post content"><?php echo $postContent; ?></textarea>
+                <textarea class="form-control" name="content" rows="3"
+                    placeholder="Your post content"><?php echo $postContent; ?></textarea>
             </div>
+
+            <div class="form-group">
+                <label for="imgurl" style="color: black; font-size: 20px;">Image</label>
+                <input type="file" name="imgurl" class="form-control" id="" value="">
+            </div>
+
             <!-- Neu khong edit thi se submit nhu thuong -->
             <?php if(isset($_SESSION['edit'])): ?>
             <button type="submit" name="edit-post" class="btn btn-primary">Update</button>
             <?php else: ?>
             <button type="submit" name="add-post" class="btn btn-primary">Submit</button>
             <?php endif; ?>
-            
+
         </form>
         <?php endif;?>
     </div>
