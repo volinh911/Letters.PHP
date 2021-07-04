@@ -24,7 +24,7 @@ if (isset($_POST['add-post'])) {
     $post_title = $_POST['title'];
     $post_content = $_POST['content'];
     $file = $_FILES['imgurl'];
-    var_dump($_FILES);
+    // var_dump($_FILES);
     $fileName = $file['name'];
     $fileTmpName = $file['tmp_name'];
     $fileSize = $file['size'];

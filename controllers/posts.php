@@ -172,17 +172,6 @@
             }else{
                 $this->errors['idfk']= "Problem with file";
             }
-                // $sql = "INSERT INTO posts (user_id, title, image, content) VALUES (?,?,?,?)";
-                // $stmt = $conn->prepare($sql);
-                // $stmt->bind_param("isss", $userid, $title, $filenalDestination, $content);
-                // $stmt->execute();
-                // if ($stmt->affected_rows == 1) {
-                //     $post_id = $stmt->insert_id;
-                //     $location = "post.php?id=$post_id&new=true";
-                //     header("Location: $location");
-                //     exit();
-                // }
-
             if(empty($this->errors)){
                 $this->createPost();
             }
