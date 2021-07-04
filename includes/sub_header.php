@@ -20,6 +20,7 @@
                     Community
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="posts.php">Explore</a>
                     <a class="dropdown-item" href="create.php">Make a Question</a>
                 </div>
             </div>
@@ -38,7 +39,7 @@
                 </div>
             </div>
         <?php else : ?>
-            <li><a href="#">Community</a></li>
+            <li><a href="posts.php">Community</a></li>
             <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Join Us

@@ -159,6 +159,10 @@ header ul li a.active {
 /*DONE NAVBAR*/
 
 footer {
-    background: #2b1055;
     background: url(../images/stars.png);
+    background-color: #2b1055;
+}
+
+footer i {
+    font-size: 2rem;
 }
