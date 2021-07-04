@@ -35,7 +35,9 @@
         <div class="toggle"></div>
         <ul class="navigation">
             <li><a href="index.php" class="active">Home</a></li>
-            <li><a href="example.php">Scrambles</a></li>
+            <li><a href="#">Word Hunt</a></li>
+            <li><a href="#">Games</a></li>
+            <!-- <li><a href="example.php">Scrambles</a></li> -->
             <li><a href="posts.php">Community</a></li>
             <?php if (isset($_SESSION['user_id'])) : ?>
             <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
@@ -47,6 +49,7 @@
             <?php endif; ?>
             <li><a href="logout.php">Logout</a></li>
             <?php else : ?>
+            <li><a href="#">Join Us</a></li>
             <li><a href="login.php">Sign In</a></li>
             <li><a href="register.php">Sign Up</a></li>
             <?php endif; ?>
