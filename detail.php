@@ -3,7 +3,9 @@
     include_once ('./path.php');
     include_once (ROOT_PATH . '/controllers/posts.php');
     $post_id = $_GET["id"];
-    $user_id = $_SESSION["user_id"];
+    if (isset($_SESSION["user_id"])) {
+        $user_id = $_SESSION["user_id"];
+    }
     // var_dump($post_id);
 
     $posts = new Post($conn);
@@ -96,22 +98,32 @@
         <?php endif; ?>
 
         <!--Comment Area-->
+        <?php if (isset($_SESSION["user_id"])):?>
         <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
             <div class="comment-area" id="comment-area">
                 <textarea name="comment" id="" placeholder="comment here ... "></textarea>
                 <button type="submit" name="add-comment">Submit </button>
             </div>
         </form>
+        <?php else: ?>
+        <div class="mt-5 col-md-6 text-center">
+            <h2 class="display-5">Please Login to Comment!</h2>
+            <p>Create an account or login to post to the website.</p>
+            <button type="button" class="btn btn-block btn-outline-primary"><a href="login.php"><i
+                        class="fas fa-sign-in-alt"></i> Create Account/Login</a> </button>
+        </div>
+        <?php endif; ?>
         <!--Comments Section-->
         <?php foreach($userComments as $userComment):?>
         <div class="container comments py-5">
             <div class="body">
                 <div class="authors">
-                
+
                     <div class="username"><a href=""><?php echo $userComment['username']; ?></a></div>
-                    <div>Role <?php if ($userComment['admin'] == 0): echo "Normal User"; else: echo "Admin"; endif; ?></div>
-                    <img src="<?php if ($userComment != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>" alt=""
-                        id="avatar">
+                    <div>Role <?php if ($userComment['admin'] == 0): echo "Normal User"; else: echo "Admin"; endif; ?>
+                    </div>
+                    <img src="<?php if ($userComment != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>"
+                        alt="" id="avatar">
                     <div>Number of Posts: <?php echo implode("SEPARATOR", $posts->countPost("25")); ?> <u></u></div>
                 </div>
                 <div class="content">
