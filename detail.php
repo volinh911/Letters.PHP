@@ -11,7 +11,7 @@
     // Get post qua id
     $posts = new Post($conn);
     $post = $posts->getPost($post_id);
-
+    var_dump($post);
     // Dem post roi luu vao bien, bien day van la array
     $totalPost = $posts->countPost($post["user_id"]);
 
@@ -23,7 +23,6 @@
     if (isset($_POST["add-comment"])) {
         $comment_content = $_POST["comment"];
         $comment = $comments->checkComment($user_id, $post_id, $comment_content);
-        // var_dump($userComments['0']);
         $errors = $comments->errors;
     }
 
@@ -112,6 +111,7 @@
                 <div class="authors">Author</div>
                 <div class="content">Topic: <?php echo $post["title"]; ?></div>
                 <!-- Neu nguoi dung hien tai == author cua post thi duoc edit/delete -->
+                <?php if (isset($_SESSION["user_id"])): ?>
                 <?php if($user_id == $post['user_id'] || $_SESSION["admin"] == 1): ?>
 
                 <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
@@ -123,7 +123,7 @@
                 </form>
                 
                 <?php endif; ?>
-
+                    <?php endif; ?>
             </div>
 
             <div class="body">
@@ -138,9 +138,10 @@
                     <div>Number of Posts: <u><?php echo $totalPost['id'];  ?></u></div>
                 </div>
 
-                <!-- Noi dung comment -->
+                <!-- Noi dung post -->
                 <div class="content">
-                    <?php echo $post["content"]; ?>
+                    <?php echo $post["content"]; ?> <br>
+                    <img src="<?php echo $post['image'];?>" alt="">
                 </div>
             </div>
         </div>
@@ -195,6 +196,7 @@
                 <!-- Noi dung comment -->
                     <?php echo $userComment["content"]; ?>
                     <!-- Neu nguoi dang loggedin == nguoi viet comment hoac la admin thi duoc edit/delete comment -->
+                    <?php if (isset($_SESSION["user_id"])): ?>
                     <?php if($user_id == $userComment['user_id'] || $_SESSION["admin"] == 1): ?>
 
                     <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
@@ -206,7 +208,7 @@
                     </form>
 
                     <?php endif; ?>
-
+                    <?php endif; ?>
                 </div>
             </div>
             <hr>
