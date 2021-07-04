@@ -50,10 +50,37 @@ header ul li a {
     padding: 6px 15px;
     color: #2b1055;
     border-radius: 20px;
+    font-weight: 400;
 }
 
 header ul li a:hover,
 header ul li a.active {
+    background: #2b1055;
+    color: #fff;
+}
+
+#dropdownMenuLink {
+    color: #2b1055;
+    text-decoration: none;
+    background-color: transparent !important;
+    box-shadow: none;
+    text-transform: none;
+    font-size: 1em;
+    padding-right: 0;
+}
+
+.dropdown-menu {
+    border-radius: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.dropdown-item {
+    border-radius: 20px;
+}
+
+.dropdown-item:hover {
+    border-radius: 20px;
     background: #2b1055;
     color: #fff;
 }
@@ -89,6 +116,10 @@ header ul li a.active {
     header ul li a.active {
         background: #fff;
         color: #2b1055;
+    }
+    #dropdownMenuLink {
+        font-size: 1.2em;
+        color: #fff;
     }
     #header .navigation li {
         margin-left: 0;

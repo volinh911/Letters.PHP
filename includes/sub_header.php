@@ -1,25 +1,45 @@
-
-    <!--===== HEADER =====-->
-    <header id="header">
-        <a href="/index.php" class="logo">Letters</a>
-        <div class="toggle"></div>
-        <ul class="navigation">
-            <li><a href="index.php" class="active">Home</a></li>
-            <?php if (isset($_SESSION['user_id'])) : ?>
-            <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
-            <li><a href="create.php">Add new post</a></li>
-            <?php if ($_SESSION['admin']) : ?>
-            <li><a href="./admin/dashboard.php">Dashboard</a></li>
-            <?php endif; ?>
-            <?php if ($_SESSION['admin'] == 0) : ?>
-            <li><a href="./client/user_dashboard.php">User Dashboard</a></li>
-            <?php endif; ?>
-            <li><a href="logout.php">Logout</a></li>
-            <?php else : ?>
-            <li><a href="./game.php">Scrambles</a></li>
-            <li><a href="./posts.php">Community</a></li>
-            <li><a href="login.php">Sign In</a></li>
-            <li><a href="register.php">Sign Up</a></li>
-            <?php endif; ?>
-        </ul>
-    </header>
+<!--===== HEADER =====-->
+<header id="header">
+    <a href="#" class="logo">Letters</a>
+    <div class="toggle"></div>
+    <ul class="navigation">
+        <li><a href="index.php" class="active">Home</a></li>
+        <li><a href="#">Word Hunt</a></li>
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Games
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="game.php">Scrambles</a>
+                <a class="dropdown-item" href="hangman.php">Hangman</a>
+            </div>
+        </div>
+        <li><a href="posts.php">Community</a></li>
+        <?php if (isset($_SESSION['user_id'])) : ?>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $_SESSION['username']; ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <?php if ($_SESSION['admin']) : ?>
+                        <a class="dropdown-item" href="logout.php">Dashboard</a>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['admin'] == 0) : ?>
+                        <a class="dropdown-item" href="logout.php">User Dashboard</a>
+                    <?php endif; ?>
+                    <a class="dropdown-item" href="logout.php">Logout</a>
+                </div>
+            </div>
+        <?php else : ?>
+            <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Join Us
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="login.php">Sign In</a>
+                    <a class="dropdown-item" href="register.php">Sign Up</a>
+                </div>
+            </div>
+        <?php endif; ?>
+    </ul>
+</header>

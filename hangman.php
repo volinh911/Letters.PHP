@@ -28,7 +28,7 @@
     <title>HangMan Game</title>
 
     <!-- <link rel="stylesheet" href="./hangman.css"> -->
-    <link rel="shortcut icon" href="images/favicon_io/favicon.ico">
+    <link rel="shortcut icon" href="./images/favicon_io/favicon.ico">
     <link rel="manifest" href="hangmanthegame/manifest.json" />
     <link rel="stylesheet" href="hangmanthegame/hangman.css">
     <link rel="stylesheet" href="css/sub_header_footer_styles.css">
