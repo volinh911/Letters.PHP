@@ -59,7 +59,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                             <h3 style="margin: auto;">User Profile</h3>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body grid">
                             <div class="table-responsive">
                                 <form action="./index.php" method="post" enctype="multipart/form-data">
                                     <div>
@@ -83,11 +83,14 @@ include_once(ROOT_PATH . '/controllers/users.php');
                                     </div>
                                 </form>
                             </div>
+                            <div class="temp">
+                                <img src="../../images/Phuc.png" alt="dude..">
+                            </div>
                         </div>
 
                     </div>
                 </div>
-
+                
 
             </div>
         </main>

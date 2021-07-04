@@ -208,7 +208,15 @@ main {
     margin-top: 3.5rem;
     display: grid;
     grid-gap: 2rem;
-    grid-template-columns: 65% auto;
+    grid-template-columns: auto;
+}
+
+.recent-grid label {
+    padding-left: 12px;
+}
+
+.projects {
+    box-shadow: 7px 7px 2px #0000002e;
 }
 
 .card {
@@ -233,6 +241,21 @@ main {
     font-size: .8rem;
     padding: .45rem 1rem;
     border: 1px solid var(--main-color);
+}
+
+.card-body.grid {
+    grid-template-columns: 64% auto;
+    display: grid;
+}
+
+.temp img {
+    min-width: 200px;
+    width: 300px;
+    padding: 80px 0px 10px 0px;
+}
+
+.projects {
+    box-shadow: 7px 7px 2px #0000002e;
 }
 
 table {
@@ -270,13 +293,16 @@ tr td:last-child {
 .status.green {
     background: cornflowerblue;
 }
+
 .status.red {
     background: var(--text-grey);
 }
+
 .edit {
     color: rgb(6, 192, 6);
 }
-.delete{
+
+.delete {
     color: red;
 }
 
@@ -284,24 +310,24 @@ tr td:last-child {
     width: 100%;
     overflow-x: auto;
 }
-input{
-    width: 70%;
+
+input {
+    width: 90%;
     padding: 5px;
-    border: 1px solid gainsboro; 
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    margin-top: 6px; 
-    margin-bottom: 16px; 
+    border: 1px solid gainsboro;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
     margin-left: 10px;
 }
-form > div{
+
+form>div {
     margin-left: 10px;
     margin-top: 20px;
 }
 
-
-
-form button{
+form button {
     background: var(--main-color);
     border-radius: 13px;
     color: #fff;
@@ -310,6 +336,7 @@ form button{
     border: 1px solid var(--main-color);
     margin: 20px 20px;
 }
+
 .customer {
     display: flex;
     justify-content: space-between;
@@ -344,24 +371,25 @@ form button{
     margin-left: .5rem;
     color: var(--main-color);
 }
+
 .msg {
-  width: 100%;
-  margin: 5px auto;
-  padding: 8px;
-  border-radius: 5px;
-  list-style: none;
+    width: 100%;
+    margin: 5px auto;
+    padding: 8px;
+    border-radius: 5px;
+    list-style: none;
 }
 
 .success {
-  color: whitesmoke;
-  border: 1px solid #bcf5bc;
-  background:  #5cb85c;
+    color: whitesmoke;
+    border: 1px solid #bcf5bc;
+    background: #5cb85c;
 }
 
 .error {
-  color: whitesmoke;
-  border: 1px solid #d9534f;
-  background: #d9534f;
+    color: whitesmoke;
+    border: 1px solid #d9534f;
+    background: #d9534f;
 }
 
 @media only screen and (max-width: 1200px) {

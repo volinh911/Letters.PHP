@@ -1,6 +1,6 @@
 <?php 
     include_once("eeeeeee.php");
-    include_once("controllers/users.php")
+    include_once("controllers/users.php");
 ?>
 
 <!DOCTYPE html>
@@ -53,8 +53,6 @@
                 <h2 class="msg-box mx-5 my-3"></h2>
                 <input type="text" class="hidden" id="guess-field">
                 <button class="btn mt-3" id="main-btn" name="main-btn">Pick a game mode</button>
-                <p name="dudebro"><?php if (isset($_POST['main-btn'])) { $crap .= 1; var_dump($crap); } ?></p> <!-- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -->
-                <!-- <button class="btn" id="main-btn">Click here to begin</button> -->
             </div>
         </section>
         <div class="my-4 text-center">
@@ -73,14 +71,6 @@
     </div>
     <div class="word-holder4">
         <p id="word-holder4" style="content-visibility: hidden;"><?php echo selectAllWords('4'); ?></p>
-    </div>
-
-    <hr>
-
-    <div class="leaderboard-box">
-        <h1 id="lb-title">LEADERBOARD</h1>
-        <hr>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
