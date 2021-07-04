@@ -34,7 +34,7 @@ session_start();
         <div class="toggle"></div>
         <ul class="navigation">
             <li><a href="index.php" class="active">Home</a></li>
-            <li><a href="#">Word Hunt</a></li>
+            <li><a href="#">Dicktionary</a></li>
             <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Games
@@ -44,8 +44,15 @@ session_start();
                     <a class="dropdown-item" href="hangman.php">Hangman</a>
                 </div>
             </div>
-            <li><a href="posts.php">Community</a></li>
             <?php if (isset($_SESSION['user_id'])) : ?>
+                <div class="dropdown show">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Community
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="create.php">Make a Question</a>
+                    </div>
+                </div>
                 <div class="dropdown show">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php echo $_SESSION['username']; ?>
@@ -61,6 +68,7 @@ session_start();
                     </div>
                 </div>
             <?php else : ?>
+                <li><a href="#">Community</a></li>
                 <div class="dropdown show">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Join Us
