@@ -2,17 +2,18 @@
 
     include_once ('./path.php');
     include_once (ROOT_PATH . '/controllers/posts.php');
+
+    #posts/post la object
     $posts = new Post($conn);
     
+    #kiem tra url va keu ham lay posts tuy thuoc vao so luong bai viet (1 trang 5 bai)
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     if ($page > 0) {
-        $post = $posts->getPosts($page);
-        // var_dump($post);
+        $post = $posts->getPosts($page); 
     }
-    //  var_dump($post);
+
     //get number of pages
     $pages = $posts->getPages();
-    // var_dump($page);
 
     #sigular Page
     $Previous = $page - 1;
@@ -50,33 +51,38 @@
 
 <body>
     <div class="container-fluid">
-        <?php include_once('./includes/sub_header.php');
-    //   var_dump($_SESSION);?>
+        <?php include_once('./includes/sub_header.php');?>
 
         <!-- forum titles placeholder -->
+        <!-- Alert nguoi dung sau 1 thao tac nhat dinh -->
         <div class="container page-wrapper">
 
             <?php if (isset($_GET['success'])): ?>
             <div class="alert alert-success mt-3" role="alert">
-                Post added successfully!
+                Post added/edited successfully!
             </div>
+
             <?php elseif(isset($_GET['error'])): ?>
             <div class="alert alert-danger mt-3" role="alert">
                 There was a problem adding/deleting your post...
             </div>
+
             <?php elseif(isset($_GET['delete'])): ?>
             <div class="alert alert-warning mt-3" role="alert">
                 A post was deleted...
             </div>
             <?php endif; ?>
 
+            <!-- Check neu trang hien tai > 0 va so luong trang tuong ung voi bai phai > trang hien tai. Neu khong-> Hien trang khong co -->
             <?php if ($page > 0 && $page <= $pages): ?>
             <?php foreach($post as $p):  ?>
 
+            <!-- Ham static dem comment  -->
             <?php 
                 $comment = Comment::countComment($p["post_id"], $conn);
             ?>
 
+            <!-- In ra nhung thu can thiet -->
             <div class="table-row">
                 <div class="subjects">
                     <a href="detail.php?id=<?php echo $p['post_id'];?>"><?php echo $p['title']; ?></a>
@@ -87,8 +93,8 @@
                 replies:
                     <?php if($comment == null): echo "0"; else: echo implode($comment['0']); endif; ?> <br>
                 </div>
-
             </div>
+
             <?php endforeach; ?>
             <?php else: ?>
 
@@ -102,6 +108,8 @@
         <!--Pagination starts-->
         <nav>
             <ul class="justify-content-center page-nav">
+                <!-- Dynamic pagination -->
+                <!-- Disabled khi khong co trang previous && next -->
                 <?php if($page == 1): ?>
                 <li class="disabled" title="Previous">
                     <a href="posts.php?page=<?= $Previous; ?>">
@@ -113,7 +121,7 @@
                         <i class="fas fa-chevron-left"></i></a>
                 </li>
                 <?php endif; ?>
-
+                <!-- In ra so trang tuong ung voi luong bai viet -->
                 <?php for($i = 1; $i<= $pages; $i++) : ?>
                 <li class="pageNumber"><a href="posts.php?page=<?= $i; ?>"><?= $i; ?></a></li>
                 <?php endfor; ?>
@@ -144,8 +152,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
-
-
 
 </body>
 

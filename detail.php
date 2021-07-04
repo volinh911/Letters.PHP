@@ -3,22 +3,23 @@
     include_once ('./path.php');
     include_once (ROOT_PATH . '/controllers/posts.php');
     $post_id = $_GET["id"];
+
     if (isset($_SESSION["user_id"])) {
         $user_id = $_SESSION["user_id"];
     }
-    // var_dump($_SESSION);
-
+    
+    // Get post qua id
     $posts = new Post($conn);
     $post = $posts->getPost($post_id);
 
-    
+    // Dem post roi luu vao bien, bien day van la array
     $totalPost = $posts->countPost($post["user_id"]);
 
-    // var_dump($post["user_id"]);
+    // Lay comment
     $comments = new Comment($post_id,$conn);
     $userComments= $comments->showComments();
-    //var_dump($userComments);
 
+    // Add comment
     if (isset($_POST["add-comment"])) {
         $comment_content = $_POST["comment"];
         $comment = $comments->checkComment($user_id, $post_id, $comment_content);
@@ -26,17 +27,15 @@
         $errors = $comments->errors;
     }
 
-    $id = 0;
+    // Edit comment
     $commentRows = "";
-    $update = false;
-    
+    $update = false;    
     if (isset($_POST["edit-comment"])) {
         $update = true;
         $id = $_POST["edit-comment"];
         $_SESSION["comment-id"] = $id;
-        // var_dump($_SESSION["comment-id"]);
-        $commentRow = $comments->getComment($id);
-        $commentRows = $commentRow["content"];
+        $commentRow = $comments->getComment($id); 
+        $commentRows = $commentRow["content"]; //Tach array
     } 
 
     if(isset($_POST["update-comment"])){
@@ -47,14 +46,23 @@
         $updated_comment = $comments->editComment($editCommentID, $comment_content);
     }
 
+    // Delete comment
     if (isset($_POST["delete-comment"])) {
         $deleteCommentID = $_POST["delete-comment"];
         $comments->deleteComment($deleteCommentID);
     } 
-        
+      
+    // Delete post
     if (isset($_POST["delete-post"])) {
         $posts->deletePost($post_id);
     } 
+
+    // Edit Post
+    if(isset($_POST['edit-post'])){
+        $_SESSION['post_id']= $post_id;
+        $_SESSION['edit']= "1";
+        header("Location: create.php");
+    }
 
 ?>
 
@@ -90,7 +98,6 @@
 
     <?php include_once('./includes/sub_header.php'); ?>
 
-
     <div class="container page-wrapper">
         <!--Navigation-->
         <div class="div m-3">
@@ -104,12 +111,15 @@
             <div class="head">
                 <div class="authors">Author</div>
                 <div class="content">Topic: <?php echo $post["title"]; ?></div>
-
+                <!-- Neu nguoi dung hien tai == author cua post thi duoc edit/delete -->
                 <?php if($user_id == $post['user_id'] || $_SESSION["admin"] == 1): ?>
 
                 <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
                     <button type="submit" name="delete-post">Delete
                     </button>
+
+                    <a href="create.php"><button type="submit" name="edit-post">Edit
+                    </button></a>
                 </form>
                 
                 <?php endif; ?>
@@ -119,12 +129,16 @@
             <div class="body">
                 <div class="authors">
                     <div class="username"><a href=""><?php echo $post["username"]; ?></a></div>
+                    <!-- Role admin/user -->
                     <div>Role: <?php if($post["admin"] == 0):echo "Normal User"; else: echo "Admin"; endif;?></div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt=""
+                    <!-- Khong profile image thi hinh mac dinh -->
+                    <img src="<?php if ($post['image_profile'] != null): echo $post['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif; ?>" alt=""
                         id="avatar">
+                        <!-- Dem post Author -->
                     <div>Number of Posts: <u><?php echo $totalPost['id'];  ?></u></div>
-
                 </div>
+
+                <!-- Noi dung comment -->
                 <div class="content">
                     <?php echo $post["content"]; ?>
                 </div>
@@ -135,15 +149,18 @@
         <?php if (isset($_SESSION["user_id"])):?>
         <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
             <div class="comment-area" id="comment-area">
+                <!-- Neu edit se dua noi dung truoc khi sua cho nguoi dung -->
                 <textarea name="comment" id="" placeholder="comment here ... "><?php echo $commentRows;?></textarea>
+                <!-- Neu khong phai sua thi comment bth -->
                 <?php if($update == false): ?>
                 <button type="submit" name="add-comment">Submit </button>
                 <?php else: ?>
                 <button type="submit" name="update-comment">Update </button>
                 <?php endif; ?>
-
             </div>
         </form>
+
+        <!-- Khong dang nhap khong duoc comment -->
         <?php else: ?>
         <div class="mt-5 col-md-6 text-center">
             <h2 class="display-5">Please Login to Comment!</h2>
@@ -152,26 +169,32 @@
                         class="fas fa-sign-in-alt"></i> Create Account/Login</a> </button>
         </div>
         <?php endif; ?>
-        <!--Comments Section-->
-        <?php foreach($userComments as $userComment): //var_dump($userComment["comment_id"]);?>
 
+        <!--Comments Section-->
+        <!-- In comment -->
+        <?php foreach($userComments as $userComment):?>
         <div class="container comments py-5">
             <div class="body">
                 <div class="authors">
-
                     <div class="username"><a href=""><?php echo $userComment['username']; ?></a></div>
+                    <!-- Role admin/user -->
                     <div>Role <?php if ($userComment['admin'] == 0): echo "Normal User"; else: echo "Admin"; endif; ?>
                     </div>
-                    <img src="<?php if ($userComment != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>"
+                    <!-- Khong hinh = hinh mac dinh -->
+                    <img src="<?php if ($userComment['image_profile'] != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>"
                         alt="" id="avatar">
+                    <!-- Dem posts cua nguoi dung -->
+                    <!-- Neu chua post gi se tra ra null->loi nen set = 0 -->
+                    <!-- Lay value tu key -->
                     <div>Number of Posts:
                         <?php if($posts->countPost($userComment['user_id']) < 1): echo "0"; else: echo implode($posts->countPost($userComment['user_id'])); endif; ?>
                         <u></u>
                     </div>
                 </div>
                 <div class="content">
+                <!-- Noi dung comment -->
                     <?php echo $userComment["content"]; ?>
-
+                    <!-- Neu nguoi dang loggedin == nguoi viet comment hoac la admin thi duoc edit/delete comment -->
                     <?php if($user_id == $userComment['user_id'] || $_SESSION["admin"] == 1): ?>
 
                     <form action="detail.php?id=<?php echo $post_id;?>" method="POST">

@@ -1,15 +1,41 @@
 <?php
 include_once ('./path.php');
 include_once('./controllers/posts.php');
-var_dump($_SESSION);
+
+unset($_SESSION['comment-id']);
+
+$post = new Post($conn);
+
+// Cho 2 bien rong de khong in sai 
+$postTitle = "";
+$postContent = "";
+
+// Nguoi dung nhan edit se co bien global, se unset khi edit thanh cong
+if (isset($_SESSION['post_id'])) {
+    $post_id = $_SESSION['post_id'];
+    $posts = $post->getPost($post_id);
+    $postTitle = $posts['title'];
+    $postContent = $posts['content'];
+}
+
+// Add bai viet
 if (isset($_POST['add-post'])) {
     $user_id = $_SESSION['user_id'];
     $post_title = $_POST['title'];
     $post_content = $_POST['content'];
-    $post = new Post($conn);
+
     $post->checkNewPost($user_id, $post_title, $post_content);
     $errors = $post->errors;
 }
+
+// Edit bai viet
+if(isset($_POST['edit-post'])){
+    $post_title = $_POST['title'];
+    $post_content = $_POST['content'];
+
+    $post->editPost($post_id, $post_title, $post_content);
+}
+
 ?>
 
 <!doctype html>
@@ -40,6 +66,7 @@ if (isset($_POST['add-post'])) {
 
 <body>
     <div class="container">
+    <!-- Khong log in khong dang bai -->
         <?php if (!isset($_SESSION["user_id"])):?>
         <div class="mt-5 col-md-6 offset-md-3 text-center">
             <h2 class="display-5">Please Login to Post!</h2>
@@ -48,7 +75,8 @@ if (isset($_POST['add-post'])) {
                         class="fas fa-sign-in-alt"></i> Create Account/Login</a> </button>
         </div>
         <?php else:?>
-
+    
+    <!-- Bao loi neu co -->
         <?php if (isset($errors) && !empty($errors)): ?>
         <div class="alert alert-danger" role="alert">
             <?php foreach ($errors as $error): ?>
@@ -58,23 +86,28 @@ if (isset($_POST['add-post'])) {
         <?php endif; ?>
 
         <form action="create.php" method="POST">
-
             <?php if (isset($_GET['error'])) {?>
             <div class=" rs2-wrap-input100 m-b-20">
                 <p class="error text-center" style="color: red;"><?php echo $_GET['error'];?></p>
             </div>
             <?php }?>
 
+            <!-- In nhung thu can thiet -->
             <div class="form-group">
                 <label for="title">Post Title</label>
-                <input type="text" class="form-control" name="title" placeholder="Your post title">
+                <input type="text" value="<?php echo $postTitle;?>" class="form-control" name="title" placeholder="Your post title">
             </div>
             <div class="form-group">
                 <label for="content">Post Content</label>
-                <textarea class="form-control" name="content" rows="3" placeholder="Your post content"></textarea>
+                <textarea class="form-control" name="content" rows="3" placeholder="Your post content"><?php echo $postContent; ?></textarea>
             </div>
-
+            <!-- Neu khong edit thi se submit nhu thuong -->
+            <?php if(isset($_SESSION['edit'])): ?>
+            <button type="submit" name="edit-post" class="btn btn-primary">Update</button>
+            <?php else: ?>
             <button type="submit" name="add-post" class="btn btn-primary">Submit</button>
+            <?php endif; ?>
+            
         </form>
         <?php endif;?>
     </div>

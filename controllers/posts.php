@@ -46,6 +46,7 @@
           $result = $stmt->get_result();
           return $result->fetch_assoc();
         }
+
         public function countPost($user_id){
             $this->user_id = $user_id;
             $sql = "SELECT COUNT(post_id) as id FROM posts WHERE user_id = ? GROUP BY user_id";
@@ -112,7 +113,34 @@
                 header("Location: posts.php?error");
             }
         }
-    
+        
+        public function editPost($id ,$title, $content){
+            $this->post_id = $id;
+            $this->post_title = $title;
+            $this->post_content = $content;
+            if(strlen($this->post_title) < 10 || strlen($this->post_title) > 30){
+                $this->errors['post-title'] = "Your title must be between 10 words and 30 words";
+            }
+            if(strlen($this->post_content) < 10){
+                $this->errors['post-content'] = "Your content must longer than 20 words";
+            }
+            if (empty($this->errors)) {
+                $sql = "UPDATE posts SET title = ?, content = ? WHERE posts.post_id = ?";
+                $stmt = $this->conn->prepare($sql);
+                $stmt -> bind_param("ssi", $this->post_title, $this->post_content, $this->post_id);
+                $stmt->execute();
+                if ($stmt->affected_rows == 1) {
+                    header("Location: posts.php?success");
+                    unset($_SESSION['edit']);
+                    unset($_SESSION['post_id']);
+                } else {
+                    header("Location: posts.php?error");
+                    unset($_SESSION['edit']);
+                    unset($_SESSION['post_id']);
+                }
+            }
+        }
+
         public function deletePost($id){
             $this->post_id = $id;
             $sql = "DELETE FROM posts WHERE posts.post_id = ?";
@@ -140,9 +168,6 @@
             $this->post_id = $post_id;
             $this->conn = $conn;
         }
-
-
-
 
         public function checkComment($user_id, $post_id, $content){
             $this->user_id = $user_id;
@@ -196,15 +221,23 @@
         public function editComment($id ,$content){
             $this->comment_id = $id;
             $this->comment_content = $content;
-            $sql = "UPDATE comments SET content = ? WHERE comments.comment_id = ?";
-            $stmt = $this->conn->prepare($sql);
-            $stmt -> bind_param("si", $this->comment_content, $this->comment_id);
-            $stmt->execute();
-            if($stmt->affected_rows == 1) {
-                header("Location: detail.php?id=".$this->post_id);
-            }else{
-                header("Location: detail.php?error");
+            if(strlen($this->comment_content) < 5){
+                $this->errors['comment'] = "Your comment must longer than 5 words";
             }
+            if(empty($this->errors)){
+                $sql = "UPDATE comments SET content = ? WHERE comments.comment_id = ?";
+                $stmt = $this->conn->prepare($sql);
+                $stmt -> bind_param("si", $this->comment_content, $this->comment_id);
+                $stmt->execute();
+                if($stmt->affected_rows == 1) {
+                    header("Location: detail.php?id=".$this->post_id);
+                    unset($_SESSION['comment-id']);
+                }else{
+                    header("Location: detail.php?error");
+                    unset($_SESSION['comment-id']);
+                }
+            }
+
         }
 
         public function deleteComment($id){
