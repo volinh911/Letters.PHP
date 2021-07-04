@@ -11,7 +11,6 @@
  let mountains_behind = document.getElementById('mountains_behind');
  let mountains_front = document.getElementById('mountains_front');
  let text = document.getElementById('text');
- let btn = document.getElementById('btn');
  let header = document.querySelector('header');
 
  window.addEventListener('scroll', function() {
@@ -22,6 +21,5 @@
      mountains_front.style.top = value * 0 + 'px';
 
      text.style.top = 50 + value * -0.5 + '%';
-     btn.style.marginTop = value * 1.5 + 'px';
      header.style.top = value * 0.5 + 'px';
  })
