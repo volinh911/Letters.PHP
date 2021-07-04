@@ -49,7 +49,6 @@ header ul li a {
     padding: 6px 15px;
     color: #fff;
     border-radius: 20px;
-    font-weight: 400;
 }
 
 header ul li a:hover,
@@ -57,50 +56,24 @@ header ul li a.active {
     background: #fff;
     color: #2b1055;
 }
-
-#dropdownMenuLink {
-    text-decoration: none;
-    background-color: transparent !important;
-    box-shadow: none;
-    text-transform: none;
-    font-size: 1em;
-    padding-right: 0;
-}
-
-.dropdown-menu {
-    border-radius: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
-.dropdown-item {
-    border-radius: 20px;
-}
-
-.dropdown-item:hover {
-    border-radius: 20px;
-    background: #2b1055;
-    color: #fff;
-}
-
 .msg {
-    width: 100%;
-    margin: 5px auto;
-    padding: 8px;
-    border-radius: 5px;
-    list-style: none;
+  width: 100%;
+  margin: 5px auto;
+  padding: 8px;
+  border-radius: 5px;
+  list-style: none;
 }
 
 .success {
-    color: #5cb85c;
-    border: 1px solid #5cb85c;
-    background: #bcf5bc;
+  color: #5cb85c;
+  border: 1px solid #5cb85c;
+  background: #bcf5bc;
 }
 
 .error {
-    color: whitesmoke;
-    border: 1px solid #d9534f;
-    background: #d9534f;
+  color: whitesmoke;
+  border: 1px solid #d9534f;
+  background: #d9534f;
 }
 
 @media (max-width: 992px) {
@@ -134,22 +107,19 @@ header ul li a.active {
         border-radius: 30px;
         display: inline-block;
     }
-    #dropdownMenuLink {
-        font-size: 1.2em;
-    }
     .toggle {
         position: relative;
         width: 30px;
         height: 30px;
         cursor: pointer;
-        background: url(../images/menu.png);
+        background: url(images/menu.png);
         background-size: 30px;
         background-position: center;
         background-repeat: no-repeat;
         z-index: 2000;
     }
     .toggle.active {
-        background: url(../images/close.png);
+        background: url(images/close.png);
         background-size: 25px;
         background-position: center;
         background-repeat: no-repeat;
@@ -390,7 +360,7 @@ div.row:nth-child(4)>div:nth-child(1) {
 /*FOOTER*/
 
 footer {
-    background: url(../images/stars.png);
+    background: url(images/stars.png);
     background-color: #2b1055;
 }
 

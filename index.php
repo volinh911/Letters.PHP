@@ -1,6 +1,6 @@
 <?php
-session_start();
-
+    session_start();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,8 @@ session_start();
 
     <!--using FontAwesome--------------->
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>Document</title>
     <link rel="stylesheet" href="css/main_page.css">
@@ -35,41 +36,22 @@ session_start();
         <ul class="navigation">
             <li><a href="index.php" class="active">Home</a></li>
             <li><a href="#">Word Hunt</a></li>
-            <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Games
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="scrambles.php">Scrambles</a>
-                    <a class="dropdown-item" href="hangman.php">Hangman</a>
-                </div>
-            </div>
+            <li><a href="#">Games</a></li>
+            <!-- <li><a href="example.php">Scrambles</a></li> -->
             <li><a href="posts.php">Community</a></li>
             <?php if (isset($_SESSION['user_id'])) : ?>
-                <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['username']; ?>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <?php if ($_SESSION['admin']) : ?>
-                            <a class="dropdown-item" href="logout.php">Dashboard</a>
-                        <?php endif; ?>
-                        <?php if ($_SESSION['admin'] == 0) : ?>
-                            <a class="dropdown-item" href="logout.php">User Dashboard</a>
-                        <?php endif; ?>
-                        <a class="dropdown-item" href="logout.php">Logout</a>
-                    </div>
-                </div>
+            <li><a href="#"><?php echo $_SESSION['username']; ?></a></li>
+            <?php if ($_SESSION['admin']) : ?>
+            <li><a href="./admin/dashboard.php">Dashboard</a></li>
+            <?php endif; ?>
+            <?php if ($_SESSION['admin'] == 0) : ?>
+            <li><a href="./client/user_dashboard.php">User Dashboard</a></li>
+            <?php endif; ?>
+            <li><a href="logout.php">Logout</a></li>
             <?php else : ?>
-                <div class="dropdown show">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Join Us
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="login.php">Sign In</a>
-                        <a class="dropdown-item" href="register.php">Sign Up</a>
-                    </div>
-                </div>
+            <li><a href="#">Join Us</a></li>
+            <li><a href="login.php">Sign In</a></li>
+            <li><a href="register.php">Sign Up</a></li>
             <?php endif; ?>
         </ul>
     </header>
@@ -82,9 +64,9 @@ session_start();
         <img src="images/mountains_front.png" id="mountains_front" alt="">
     </section>
     <?php
-    // echo '<pre>';
-    //var_dump($_SESSION);
-    // echo '</pre>';
+        // echo '<pre>';
+        //var_dump($_SESSION);
+        // echo '</pre>';
     ?>
     <section class="intro">
         <div class="container">
@@ -205,8 +187,10 @@ session_start();
                     <h4 class="font-weight-bold">Learn anytime, anywhere..</h4>
                     <p class="py-4">Make your breaks and commutes more productive with our iPhone and Android apps.
                         Download them and see why Apple and Google gave us their highest accolades.</p>
-                    <button type="button" class="btn btn-outline-dark">Download on <br><i class="fab fa-apple"></i></button>
-                    <button type="button" class="btn btn-outline-primary">Get it on <br><i class="fab fa-google-play"></i></button>
+                    <button type="button" class="btn btn-outline-dark">Download on <br><i
+                            class="fab fa-apple"></i></button>
+                    <button type="button" class="btn btn-outline-primary">Get it on <br><i
+                            class="fab fa-google-play"></i></button>
                 </div>
 
                 <div class="col-4">
@@ -299,10 +283,6 @@ session_start();
     <!-- Footer -->
 
     <script src="js/main_page.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <-- Always remember to call the above files first before calling the bootstrap.min.js file -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
 
 </html>
