@@ -127,19 +127,50 @@
         }
     }
 
-    class Comment extends Post{
-        protected $comment_content;
+    class Comment{
 
-        public function createComment($content, $post_id){
-            $this->getPost($post_id);
+        protected $user_id;
+        protected $post_id;
+        protected $comment_content;
+        protected $date_created;
+        public $conn;
+        public $errors = [];
+
+        public function __construct($post_id, $conn) {
+            $this->post_id = $post_id;
+            $this->conn = $conn;
+        }
+
+        public function checkComment($user_id, $post_id, $content){
+            $this->user_id = $user_id;
+            $this->post_id = $post_id;
             $this->comment_content = $content;
+
+            if(strlen($this->comment_content) < 5){
+                $this->errors['comment'] = "Your comment must longer than 5 words";
+            }
+            if(empty($this->errors)){
+                $this->createComment();
+            }
+        }
+
+        public function createComment(){
             $sql = "INSERT INTO comments (user_id, post_id, content) VALUES (?,?,?)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("iis", $this->user_id, $this->post_id, $this->comment_content);
             $stmt->execute();
             if($stmt->affected_rows == 1){
-                header("Location: detail.php");
+                header("Location: detail.php?id=".$this->post_id);
             }
+        }
+
+        public function showComments(){
+            $sql = "SELECT * FROM posts,users,comments WHERE comments.post_id = ? AND comments.user_id = users.user_id AND comments.post_id = posts.post_id ORDER BY comments.date_created DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("i", $this->post_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
         }
     }
     ?>

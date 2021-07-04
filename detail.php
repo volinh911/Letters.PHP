@@ -3,21 +3,26 @@
     include_once ('./path.php');
     include_once (ROOT_PATH . '/controllers/posts.php');
     $post_id = $_GET["id"];
+    $user_id = $_SESSION["user_id"];
+    // var_dump($post_id);
 
     $posts = new Post($conn);
     $post = $posts->getPost($post_id);
+
     
     $totalPost = $posts->countPost($post["user_id"]);
-    var_dump($post);
+
+    // var_dump($post);
+    $comments = new Comment($post_id,$conn);
+    $userComments= $comments->showComments();
+    // var_dump($userComments);
 
     if (isset($_POST["add-comment"])) {
         $comment_content = $_POST["comment"];
-        $comments = new Comment($conn);
-        $comment = $comments->createComment($comment_content, $post_id);
+        $comment = $comments->checkComment($user_id, $post_id, $comment_content);
+        // var_dump($userComments['0']);
+        $errors = $comments->errors;
     }
-
-    //var_dump($totalPost['id']);
-    // var_dump($_SESSION);
 ?>
 
 <!doctype html>
@@ -82,33 +87,41 @@
             </div>
         </div>
 
-        <!--Comment Area-->
-        <div class="comment-area" id="comment-area">
-            <textarea name="comment" id="" placeholder="comment here ... "></textarea>
-            <button type="submit" name="add-comment">Submit </button>
+        <?php if (isset($errors) && !empty($errors)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?php foreach ($errors as $error): ?>
+            <?php echo $error . "</br>"; ?>
+            <?php endforeach; ?>
         </div>
+        <?php endif; ?>
 
+        <!--Comment Area-->
+        <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
+            <div class="comment-area" id="comment-area">
+                <textarea name="comment" id="" placeholder="comment here ... "></textarea>
+                <button type="submit" name="add-comment">Submit </button>
+            </div>
+        </form>
         <!--Comments Section-->
+        <?php foreach($userComments as $userComment):?>
         <div class="container comments py-5">
             <div class="body">
                 <div class="authors">
-                    <div class="username"><a href="">AnotherUser</a></div>
-                    <div>Role</div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt=""
+                
+                    <div class="username"><a href=""><?php echo $userComment['username']; ?></a></div>
+                    <div>Role <?php if ($userComment['admin'] == 0): echo "Normal User"; else: echo "Admin"; endif; ?></div>
+                    <img src="<?php if ($userComment != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>" alt=""
                         id="avatar">
-                    <div>Posts: <u>455</u></div>
+                    <div>Number of Posts: <?php echo implode("SEPARATOR", $posts->countPost("25")); ?> <u></u></div>
                 </div>
                 <div class="content">
-                    Just a comment of the above random topic.
-                    <br>To see how it looks like.
-                    <br><br>
-                    Nothing more and nothing less.
+                    <?php echo $userComment["content"]; ?>
                 </div>
             </div>
             <hr>
 
         </div>
-
+        <?php endforeach; ?>
 
     </div>
 

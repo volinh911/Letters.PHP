@@ -9,7 +9,7 @@
     if ($page > 0) {
         $post = $posts->getPosts($page);
     }
-    // var_dump($post);
+    //  var_dump($post);
     //get number of pages
     $pages = $posts->getPages();
     // var_dump($page);
@@ -51,7 +51,7 @@
 <body>
     <div class="container-fluid">
         <?php include_once('./includes/sub_header.php');
-      var_dump($_SESSION);?>
+    //   var_dump($_SESSION);?>
 
         <!-- forum titles placeholder -->
         <div class="container page-wrapper">
@@ -62,7 +62,7 @@
             </div>
             <?php elseif(isset($_GET['error'])): ?>
             <div class="alert alert-danger mt-3" role="alert">
-                There was a problem adding/deleting your classmate...
+                There was a problem adding/deleting your post...
             </div>
             <?php elseif(isset($_GET['delete'])): ?>
             <div class="alert alert-warning mt-3" role="alert">
