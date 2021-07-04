@@ -52,10 +52,10 @@ session_start();
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <?php if ($_SESSION['admin']) : ?>
-                            <a class="dropdown-item" href="logout.php">Dashboard</a>
+                            <a class="dropdown-item" href="./admin/dashboard.php">Dashboard</a>
                         <?php endif; ?>
                         <?php if ($_SESSION['admin'] == 0) : ?>
-                            <a class="dropdown-item" href="logout.php">User Dashboard</a>
+                            <a class="dropdown-item" href="./client/user_dashboard.php">User Dashboard</a>
                         <?php endif; ?>
                         <a class="dropdown-item" href="logout.php">Logout</a>
                     </div>
