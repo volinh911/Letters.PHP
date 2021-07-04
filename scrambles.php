@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaming babi</title>
     <!-- Deco -->
-    <link rel="stylesheet" href="css/game_style.css">
+    <link rel="stylesheet" href="css/scrambles_style.css">
     <link rel="stylesheet" href="css/sub_header_footer_styles.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -88,7 +88,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!--===== GSAP =====-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-    <script src="js/game.js" type="text/javascript">
+    <script src="js/scrambles.js" type="text/javascript">
     </script>
 </body>
 
