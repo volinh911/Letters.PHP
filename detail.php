@@ -6,7 +6,7 @@
     if (isset($_SESSION["user_id"])) {
         $user_id = $_SESSION["user_id"];
     }
-    // var_dump($post_id);
+    // var_dump($_SESSION);
 
     $posts = new Post($conn);
     $post = $posts->getPost($post_id);
@@ -14,10 +14,10 @@
     
     $totalPost = $posts->countPost($post["user_id"]);
 
-    // var_dump($post);
+    // var_dump($post["user_id"]);
     $comments = new Comment($post_id,$conn);
     $userComments= $comments->showComments();
-    // var_dump($userComments);
+    //var_dump($userComments);
 
     if (isset($_POST["add-comment"])) {
         $comment_content = $_POST["comment"];
@@ -25,6 +25,37 @@
         // var_dump($userComments['0']);
         $errors = $comments->errors;
     }
+
+    $id = 0;
+    $commentRows = "";
+    $update = false;
+    
+    if (isset($_POST["edit-comment"])) {
+        $update = true;
+        $id = $_POST["edit-comment"];
+        $_SESSION["comment-id"] = $id;
+        // var_dump($_SESSION["comment-id"]);
+        $commentRow = $comments->getComment($id);
+        $commentRows = $commentRow["content"];
+    } 
+
+    if(isset($_POST["update-comment"])){
+        $editCommentID = $_SESSION["comment-id"];
+        // var_dump($editCommentID);
+        $comment_content = $_POST["comment"];
+        // var_dump($comment_content);
+        $updated_comment = $comments->editComment($editCommentID, $comment_content);
+    }
+
+    if (isset($_POST["delete-comment"])) {
+        $deleteCommentID = $_POST["delete-comment"];
+        $comments->deleteComment($deleteCommentID);
+    } 
+        
+    if (isset($_POST["delete-post"])) {
+        $posts->deletePost($post_id);
+    } 
+
 ?>
 
 <!doctype html>
@@ -59,6 +90,7 @@
 
     <?php include_once('./includes/sub_header.php'); ?>
 
+
     <div class="container page-wrapper">
         <!--Navigation-->
         <div class="div m-3">
@@ -72,6 +104,16 @@
             <div class="head">
                 <div class="authors">Author</div>
                 <div class="content">Topic: <?php echo $post["title"]; ?></div>
+
+                <?php if($user_id == $post['user_id'] || $_SESSION["admin"] == 1): ?>
+
+                <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
+                    <button type="submit" name="delete-post">Delete
+                    </button>
+                </form>
+                
+                <?php endif; ?>
+
             </div>
 
             <div class="body">
@@ -89,20 +131,17 @@
             </div>
         </div>
 
-        <?php if (isset($errors) && !empty($errors)): ?>
-        <div class="alert alert-danger" role="alert">
-            <?php foreach ($errors as $error): ?>
-            <?php echo $error . "</br>"; ?>
-            <?php endforeach; ?>
-        </div>
-        <?php endif; ?>
-
         <!--Comment Area-->
         <?php if (isset($_SESSION["user_id"])):?>
         <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
             <div class="comment-area" id="comment-area">
-                <textarea name="comment" id="" placeholder="comment here ... "></textarea>
+                <textarea name="comment" id="" placeholder="comment here ... "><?php echo $commentRows;?></textarea>
+                <?php if($update == false): ?>
                 <button type="submit" name="add-comment">Submit </button>
+                <?php else: ?>
+                <button type="submit" name="update-comment">Update </button>
+                <?php endif; ?>
+
             </div>
         </form>
         <?php else: ?>
@@ -114,7 +153,8 @@
         </div>
         <?php endif; ?>
         <!--Comments Section-->
-        <?php foreach($userComments as $userComment):?>
+        <?php foreach($userComments as $userComment): //var_dump($userComment["comment_id"]);?>
+
         <div class="container comments py-5">
             <div class="body">
                 <div class="authors">
@@ -124,10 +164,26 @@
                     </div>
                     <img src="<?php if ($userComment != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>"
                         alt="" id="avatar">
-                    <div>Number of Posts: <?php if($posts->countPost($userComment['user_id']) < 1): echo "0"; else: echo implode($posts->countPost($userComment['user_id'])); endif; ?> <u></u></div>
+                    <div>Number of Posts:
+                        <?php if($posts->countPost($userComment['user_id']) < 1): echo "0"; else: echo implode($posts->countPost($userComment['user_id'])); endif; ?>
+                        <u></u>
+                    </div>
                 </div>
                 <div class="content">
                     <?php echo $userComment["content"]; ?>
+
+                    <?php if($user_id == $userComment['user_id'] || $_SESSION["admin"] == 1): ?>
+
+                    <form action="detail.php?id=<?php echo $post_id;?>" method="POST">
+                        <button type="submit" value="<?php echo $userComment["comment_id"]; ?>"
+                            name="delete-comment">Delete </button>
+
+                        <button type="submit" value="<?php echo $userComment["comment_id"]; ?>"
+                            name="edit-comment">Edit </button>
+                    </form>
+
+                    <?php endif; ?>
+
                 </div>
             </div>
             <hr>

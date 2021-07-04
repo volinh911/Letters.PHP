@@ -59,7 +59,7 @@
         public function getPosts($page){
             $limit = 5;
             $start = ($page - 1) * $limit;
-            $sql = "SELECT * FROM posts,users WHERE posts.user_id = users.user_id ORDER BY posts.date_created DESC LIMIT $start, $limit";
+            $sql = "SELECT posts.title, users.username, CAST(posts.date_created as date) as date_created, posts.post_id FROM posts,users WHERE posts.user_id = users.user_id ORDER BY posts.date_created DESC LIMIT $start, $limit";
             $stmt = $this->conn->query($sql);
             if($stmt->num_rows >= 1) {
               return $stmt->fetch_all(MYSQLI_ASSOC);
@@ -114,8 +114,8 @@
         }
     
         public function deletePost($id){
-            $this->getPost($id);
-            $sql = "DELETE FROM posts,users WHERE posts.post_id = ? AND posts.user_id = users.user_id";
+            $this->post_id = $id;
+            $sql = "DELETE FROM posts WHERE posts.post_id = ?";
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("i", $this->post_id);
             $stmt->execute();
@@ -128,7 +128,7 @@
     }
 
     class Comment{
-
+        protected $comment_id;
         protected $user_id;
         protected $post_id;
         protected $comment_content;
@@ -140,6 +140,9 @@
             $this->post_id = $post_id;
             $this->conn = $conn;
         }
+
+
+
 
         public function checkComment($user_id, $post_id, $content){
             $this->user_id = $user_id;
@@ -164,6 +167,14 @@
             }
         }
 
+        public function getComment($id){
+            $sql = "SELECT * FROM comments WHERE comments.comment_id = $id";
+            $stmt = $this->conn->query($sql);
+            if($stmt->num_rows >= 1) {
+              return $stmt->fetch_assoc();
+            }
+        }
+
         public function showComments(){
             $sql = "SELECT * FROM posts,users,comments WHERE comments.post_id = ? AND comments.user_id = users.user_id AND comments.post_id = posts.post_id ORDER BY comments.date_created DESC";
             $stmt = $this->conn->prepare($sql);
@@ -172,5 +183,42 @@
             $result = $stmt->get_result();
             return $result->fetch_all(MYSQLI_ASSOC);
         }
+
+        public static function countComment($post_id, $conn){
+            $sql = "SELECT COUNT(comments.comment_id) as id FROM posts, comments, users WHERE comments.post_id = ? AND comments.user_id = users.user_id AND comments.post_id = posts.post_id GROUP BY comments.post_id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $post_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        }
+
+        public function editComment($id ,$content){
+            $this->comment_id = $id;
+            $this->comment_content = $content;
+            $sql = "UPDATE comments SET content = ? WHERE comments.comment_id = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt -> bind_param("si", $this->comment_content, $this->comment_id);
+            $stmt->execute();
+            if($stmt->affected_rows == 1) {
+                header("Location: detail.php?id=".$this->post_id);
+            }else{
+                header("Location: detail.php?error");
+            }
+        }
+
+        public function deleteComment($id){
+            $this->comment_id = $id;
+            $sql = "DELETE FROM comments WHERE comments.comment_id = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("i", $this->comment_id);
+            $stmt->execute();
+            if($stmt->affected_rows == 1) {
+            header("Location: detail.php?id=".$this->post_id);
+            }else{
+                header("Location: detail.php?error");
+            }
+        }
+
     }
     ?>

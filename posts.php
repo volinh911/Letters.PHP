@@ -4,10 +4,10 @@
     include_once (ROOT_PATH . '/controllers/posts.php');
     $posts = new Post($conn);
     
-    
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     if ($page > 0) {
         $post = $posts->getPosts($page);
+        // var_dump($post);
     }
     //  var_dump($post);
     //get number of pages
@@ -71,7 +71,12 @@
             <?php endif; ?>
 
             <?php if ($page > 0 && $page <= $pages): ?>
-            <?php foreach($post as $p) :  ?>
+            <?php foreach($post as $p):  ?>
+
+            <?php 
+                $comment = Comment::countComment($p["post_id"], $conn);
+            ?>
+
             <div class="table-row">
                 <div class="subjects">
                     <a href="detail.php?id=<?php echo $p['post_id'];?>"><?php echo $p['title']; ?></a>
@@ -79,13 +84,10 @@
                     <span>Started by <b><a href=""><?php echo $p['username']; ?></a></b> .</span>
                 </div>
                 <div class="replies">
-                    2 replies <br>
+                replies:
+                    <?php if($comment == null): echo "0"; else: echo implode($comment['0']); endif; ?> <br>
                 </div>
 
-                <div class="last-reply">
-                    Oct 12 2021
-                    <br>Last replied by <b><a href="">User</a></b>
-                </div>
             </div>
             <?php endforeach; ?>
             <?php else: ?>
@@ -134,7 +136,7 @@
 
     </div>
     </div>
-    
+
     <?php include_once('./includes/sub_footer.php'); ?>
 
 
