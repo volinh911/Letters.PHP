@@ -124,7 +124,7 @@
                     </div>
                     <img src="<?php if ($userComment != null): echo $userComment['image_profile']; else: echo "https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg"; endif;?>"
                         alt="" id="avatar">
-                    <div>Number of Posts: <?php echo implode("SEPARATOR", $posts->countPost("25")); ?> <u></u></div>
+                    <div>Number of Posts: <?php if($posts->countPost($userComment['user_id']) < 1): echo "0"; else: echo implode($posts->countPost($userComment['user_id'])); endif; ?> <u></u></div>
                 </div>
                 <div class="content">
                     <?php echo $userComment["content"]; ?>
