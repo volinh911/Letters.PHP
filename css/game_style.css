@@ -228,10 +228,16 @@ h1#title {
         display: grid !important;
         grid-template-columns: 1fr;
         place-items: center;
+        margin-top: 20px;
     }
     .stats-box .score {
         margin-right: auto;
         margin-left: auto;
+    }
+    h1#title {
+        font-size: 3rem;
+        letter-spacing: 20px;
+        padding-top: 190px;
     }
 }
 
@@ -262,5 +268,14 @@ h1#title {
         font-weight: 400;
         font-size: 3rem;
         letter-spacing: 10px;
+    }
+}
+
+@media screen and (max-aspect-ratio: 14/9) {
+    .autumn {
+        background: url(../images/AutumnNights_WhiteRaven.png) !important;
+        background-size: auto;
+        background-position: center!important;
+        background-attachment: fixed !important;
     }
 }
