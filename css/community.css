@@ -20,22 +20,16 @@ footer i {
 
 /* background image */
 
-body img#mountains_front, body img#mountains_behind {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: max-content;
-  object-fit: cover;
-  pointer-events: none;
+body {
+  background-image: url(../images/mountains_behind.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-body img#mountains_front {
-  z-index: -1;
-}
-
-body img#mountains_behind {
-  z-index: -2;
+.page-body {
+  background-image: url(../images/mountains_front.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* ########################################### */
@@ -62,6 +56,10 @@ body img#mountains_behind {
 
 .table-row .subjects {
   flex: 70%;
+}
+
+.table-row .subjects a {
+  font-weight: 600;
 }
 
 .table-row .replies {
@@ -125,12 +123,54 @@ ul.page-nav li.pageNumber:hover a, ul.page-nav li.pageNumber.active a {
 
 /* ########################################### */
 
+/* header */
+
+.detail-header header .logo, .detail-header header ul li a, .detail-header a#dropdownMenuLink {
+  color: #FC5404;
+}
+
+.detail-header header ul li a:hover, .detail-header header ul li a.active {
+  background: #FC5404;
+}
+
+@media (max-width:992px) {
+  .detail-header header#header {
+    background: #FC5404;
+  }
+}
+
+/* page */
+
+.detail-wrapper {
+  background-image: url(../images/detail1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.topic-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
+}
+
+.redirect {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.redirect a {
+  text-decoration: none;
+  color: white!important;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, .6);
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .head {
   display: flex;
   /* background-color: #2C2C2C; */
   padding: 5px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .authors {
@@ -188,4 +228,24 @@ ul.page-nav li.pageNumber:hover a, ul.page-nav li.pageNumber.active a {
 
 .comment-area input:hover {
   border: solid 1px #000000;
+}
+
+/* login request box */
+
+.login-request {
+  background-color: white;
+  border-style: solid;
+  border-color: #FC5404;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
+  border-width: 10px;
+}
+
+.login-request h2 {
+  font-weight: 400;
+}
+
+/* footer */
+
+.detail-footer footer {
+  background: #FC5404!important;
 }
