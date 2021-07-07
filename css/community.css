@@ -139,7 +139,25 @@ ul.page-nav li.pageNumber:hover a, ul.page-nav li.pageNumber.active a {
   }
 }
 
+.detail-header header a.dropdown-item:hover {
+  background: #FC5404;
+}
+
 /* page */
+
+.detail-wrapper .head form {
+  display: flex;
+}
+
+.detail-wrapper button {
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  width: 5em;
+  background: #FC5404;
+  color: white;
+  border-color: #FC5404;
+}
 
 .detail-wrapper {
   background-image: url(../images/detail1.jpg);
@@ -217,17 +235,13 @@ ul.page-nav li.pageNumber:hover a, ul.page-nav li.pageNumber.active a {
   min-height: 100px;
   padding: 10px;
   margin-block: 10px;
-}
-
-.comment-area input {
-  float: right;
-  padding: 10px;
   border-radius: 10px;
-  cursor: pointer;
 }
 
-.comment-area input:hover {
-  border: solid 1px #000000;
+.comments {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .6);
 }
 
 /* login request box */
