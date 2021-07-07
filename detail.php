@@ -118,7 +118,8 @@ if (isset($_POST['edit-post'])) {
                             <button type="submit" name="delete-post">Delete
                             </button>
 
-                            <a href="create.php"><button type="submit" name="edit-post">Edit
+                            <a href="create.php">
+                                <button type="submit" name="edit-post">Edit
                                 </button></a>
                         </form>
 
@@ -178,7 +179,7 @@ if (isset($_POST['edit-post'])) {
         <!--Comments Section-->
         <!-- In comment -->
         <?php foreach ($userComments as $userComment) : ?>
-            <div class="container comments py-5">
+            <div class="container comments my-5 p-3">
                 <div class="body">
                     <div class="authors">
                         <div class="username"><a href=""><?php echo $userComment['username']; ?></a></div>
@@ -204,6 +205,7 @@ if (isset($_POST['edit-post'])) {
                     <div class="content">
                         <!-- Noi dung comment -->
                         <?php echo $userComment["content"]; ?>
+                        <hr>
                         <!-- Neu nguoi dang loggedin == nguoi viet comment hoac la admin thi duoc edit/delete comment -->
                         <?php if (isset($_SESSION["user_id"])) : ?>
                             <?php if ($user_id == $userComment['user_id'] || $_SESSION["admin"] == 1) : ?>
@@ -218,8 +220,6 @@ if (isset($_POST['edit-post'])) {
                         <?php endif; ?>
                     </div>
                 </div>
-                <hr>
-
             </div>
         <?php endforeach; ?>
 
