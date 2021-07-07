@@ -49,8 +49,9 @@ $Next = $page + 1;
 
 
 <body>
+    <?php include_once('./includes/sub_header.php'); ?>
     <div class="container-fluid page-body">
-        <?php include_once('./includes/sub_header.php'); ?>
+
 
         <!-- forum titles placeholder -->
         <!-- Alert nguoi dung sau 1 thao tac nhat dinh -->
