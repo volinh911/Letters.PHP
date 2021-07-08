@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 02:51 PM
+-- Generation Time: Jul 08, 2021 at 03:58 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -31,9 +31,28 @@ CREATE TABLE `comments` (
   `comment_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`comment_id`, `user_id`, `post_id`, `content`, `date_created`) VALUES
+(13, 27, 8, 'hello', '2021-07-04 14:16:07'),
+(22, 27, 4, 'test comment \r\n', '2021-07-04 14:44:36'),
+(24, 27, 9, 'hello there Minhadmin', '2021-07-04 15:02:15'),
+(25, 27, 9, 'test edit 3', '2021-07-04 15:02:36'),
+(26, 27, 9, 'hello 12', '2021-07-04 15:15:18'),
+(27, 27, 5, 'hello 123', '2021-07-04 16:04:15'),
+(28, 26, 9, 'hello minh2', '2021-07-04 16:39:49'),
+(29, 26, 10, 'lol', '2021-07-04 17:51:30'),
+(32, 25, 12, 'hello ', '2021-07-04 18:35:24'),
+(33, 25, 11, 'lololol', '2021-07-04 19:05:54'),
+(34, 25, 11, 'lollololol', '2021-07-04 19:06:04'),
+(36, 1, 12, 'commingg', '2021-07-04 21:00:34'),
+(37, 1, 16, 'oke eoekee', '2021-07-04 21:07:10');
 
 -- --------------------------------------------------------
 
@@ -44,11 +63,26 @@ CREATE TABLE `comments` (
 CREATE TABLE `posts` (
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `title` text COLLATE utf8_unicode_ci NOT NULL,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
-  `imgurl` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(255) NOT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`post_id`, `user_id`, `title`, `content`, `image`, `date_created`) VALUES
+(3, 24, 'Your post 123', 'Testing 12345', '', '2021-07-04 09:55:31'),
+(4, 25, 'Test Blog 123', '12312312312312312313123', '', '2021-07-04 10:43:52'),
+(5, 25, 'Your post 123', 'aaaaaaaaaaaaaaaaaaaaaaa', '', '2021-07-04 11:10:33'),
+(6, 26, 'Test Blog 123', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaa', '', '2021-07-04 11:39:38'),
+(9, 27, 'Test Blog 123', 'aaaaaaaaaaaaaaaaaaaaaaa', '', '2021-07-04 15:02:09'),
+(10, 26, 'PostIDTEST', '123123123123123123213', '', '2021-07-04 17:27:22'),
+(11, 25, 'Blog1zzzzzzzzzzzzzzz', 'aaaaaaaaaaaaaaaaaaaaa', '', '2021-07-04 18:28:13'),
+(12, 25, 'Test Blog 12345', 'aaaaaaaaaaaaaaaaaaa', '', '2021-07-04 18:29:03'),
+(14, 25, 'Test Blog 123', 'aaaaaaaaaaaaaaaaaaaaaa', './images/60e1b954d4e814.64265203.jpg', '2021-07-04 20:36:20');
 
 -- --------------------------------------------------------
 
@@ -60,7 +94,7 @@ CREATE TABLE `results` (
   `result_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `score` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -71,28 +105,33 @@ CREATE TABLE `results` (
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `admin` tinyint(4) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `image_profile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image_profile` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `admin`, `username`, `email`, `password`, `image_profile`, `date_created`) VALUES
-(1, 1, '1959009', 'khangng2001@gmail.com', '$2y$10$3UIgo0rk9txSTsoKPmtcPOg.MiNL5PNqbSYlZVe3K/Sm//KqJzJaO', '', '2021-06-13 15:47:04'),
-(2, 1, '1959043', '1959043@itec.hcmus.edu.vn', '$2y$10$0K/WoEHxM.yJCs/jPHqoA.s40zFmXgy/z/pOBOQzce1xhzGGyH19i', '', '2021-06-13 15:49:23'),
-(5, 1, '1959013', '1959013@itec.hcmus.edu.vn', '$2y$10$1Kn.Lwq987FP.nY23L0p3utlUILxCK0cxZYQ14lmxwujVSiOupxq6', '', '2021-06-17 10:41:37'),
-(6, 1, '1959029', '1959029@itec.hcmus.edu.vn', '$2y$10$Z14llsAhVbVQ1tu.baDzo.Nqj.E705x7HcDS7d8kP0GPTaeL.Sxb6', '', '2021-06-17 13:47:09'),
+(1, 1, '1959009', '1959009@itec.hcmus.edu.vn', '$2y$10$ju7SXVby1N.riF9KyuA9NednNLpT8U4tXXi7J/YvJoDh.L9PDrH6W', '1625743080_cartoon.jpg', '2021-06-13 15:47:04'),
+(2, 0, '1959043', '1959043@itec.hcmus.edu.vn', '$2y$10$0K/WoEHxM.yJCs/jPHqoA.s40zFmXgy/z/pOBOQzce1xhzGGyH19i', '', '2021-06-13 15:49:23'),
+(5, 1, '1959013', '1959013@itec.hcmus.edu.vn', '$2y$10$NHQD/hJ4q7YV.7dfpKXBQOv1T7Nw.RSvRUVngnEWN039C.NBbudvS', '1625407833_Linh.png', '2021-06-17 10:41:37'),
+(6, 1, '1959029', '1959029@itec.hcmus.edu.vn', '$2y$10$kYDE5T8Y.roLsd9CrMcp4./u2hMv/GFcR6y49.7DAjuprKbNRDizu', '1625469520_212757839_290684916080770_7904773703708990765_n.jpg', '2021-06-17 13:47:09'),
 (15, 0, '1959026', '1959026@itec.hcmus.edu.vn', '$2y$10$TVpyNsYbp61xvX9y3so38utSXqm4NHoYsJrIWkGe35Mmamq3iwXAm', '', '2021-06-26 11:54:45'),
 (19, 0, '1959020', '1959020@itec.hcmus.edu.vn', '$2y$10$.A.0UFVCLYLsVa4kQBCnfe10aTdkXd5aQwZPKxY1YEAk3w219joha', '1625283417_zura.png', '2021-06-28 19:13:48'),
 (20, 0, '1959014', '1959014@itec.hcmus.edu.vn', '$2y$10$iYStKWI3MGEQ1f9E4ecOZu5.pRjvcx/5aHvjb2zcUsl7UB4e9SWfW', '1625215640_zura.png', '2021-06-28 19:35:05'),
 (21, 0, '1959002', '1959002@itec.hcmus.edu.vn', '$2y$10$/YKPIAsCoLf484uH.BxIhu1zb.YKIkMvQChz3dfZiBi48uqUE9FuO', '1625301015_Zurasanta.jpg', '2021-06-28 21:26:58'),
 (22, 0, '1959024', '1959024@itec.hcmus.edu.vn', '$2y$10$vybycvYWRPn/6NmI3QcedOKxzsh31EEcpM5hG.IVg.2yLquzY/y9K', '', '2021-06-28 21:46:41'),
-(23, 0, '1959033', '1959033@itec.hcmus.edu.vn', '$2y$10$5BN6GUClJiklppUveLHqMOHtzukeBabpR1gnaf2Uoxx0WWWywZrvK', '', '2021-06-28 21:49:01');
+(23, 1, '1959039', '1959039@itec.hcmus.edu.vn', '$2y$10$GvlS1OIfFlJr.i9QiKaXne8ZvL813Ki//fKTAkklAS2L4.L5bXddm', '1625408125_Thu.png', '2021-06-28 21:49:01'),
+(24, 0, 'minh', 'dota1153@gmail.com', '$2y$10$gXH9YZt12K/2TgBnSjz/d.QDsCrRNhBaKkz.g81Y0cVSh1Uh35EF2', NULL, '2021-07-04 09:54:04'),
+(25, 0, 'minh1', 'dota11532@gmail.com', '$2y$10$9JsjIgrIPgu2Cd3Kzkk2Qewe2wbXidlpfZQ67YFdTIRV3vdpX9oCS', NULL, '2021-07-04 10:06:08'),
+(26, 0, 'minh2', 'dota11533@gmail.com', '$2y$10$Udz5b8ynnXtQoMFU6b8X7OvSqXek9gwxyV3lM.1I/yqT70FUfw9f2', NULL, '2021-07-04 11:29:11'),
+(27, 1, 'minh3', 'dota11533@gmail.com', '$2y$10$SzTNgQqllMSsHqHLPjFU0ug8GS.ZRxD6JeJuefS638wHua4HNwbrC', '1625408382_megumin.jpg', '2021-07-04 11:42:02'),
+(29, 0, 'Gintoki', 'gintoki@gmail.com', '$2y$10$5jr9VVt7zcBeN.dmKmm0W.pElT5hzxz4G5WoF1qAWvug0.qCK4/k.', NULL, '2021-07-08 18:23:05');
 
 -- --------------------------------------------------------
 
@@ -102,9 +141,9 @@ INSERT INTO `users` (`user_id`, `admin`, `username`, `email`, `password`, `image
 
 CREATE TABLE `words` (
   `word_id` int(11) NOT NULL,
-  `word` text COLLATE utf8_unicode_ci NOT NULL,
-  `diff` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `word` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `diff` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `words`
@@ -554,13 +593,13 @@ ALTER TABLE `words`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `results`
@@ -572,13 +611,13 @@ ALTER TABLE `results`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `words`
 --
 ALTER TABLE `words`
-  MODIFY `word_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `word_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=401;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

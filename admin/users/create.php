@@ -28,6 +28,13 @@ include_once(ROOT_PATH . '/controllers/users.php');
         ?>
 
         <main>
+            <?php if (!empty($errors)) : ?>
+                <div class="msg error">
+                    <?php foreach ($errors as $error) : ?>
+                        <li style="text-align: center;"><?php echo $error; ?></li>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">
@@ -61,7 +68,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     </div>
                 </div>
 
-             
+
 
                 <div class="customers">
                     <div class="card">

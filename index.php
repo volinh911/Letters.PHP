@@ -22,7 +22,7 @@ session_start();
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>Home</title>
     <link rel="stylesheet" href="css/main_page.css">
     <link rel="shortcut icon" href="images/favicon_io/favicon.ico">
 </head>

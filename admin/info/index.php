@@ -46,12 +46,7 @@ include_once(ROOT_PATH . '/controllers/users.php');
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
-            <?php
-            // echo '<pre>';
-            // var_dump($current_user['image_profile']);
-            // echo '</pre>';
-
-            ?>
+           
             <div class="recent-grid">
                 <div class="projects">
                     <div class="card">

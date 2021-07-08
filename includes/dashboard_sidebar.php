@@ -11,7 +11,7 @@
                          <span> Users </span></a>
                  </li>
                  <li>
-                     <a href="/admin//info/index.php" class="active">
+                     <a href="/admin/info/index.php" class="active">
                          <span><i class="fas fa-user-circle"></i></span>
                          <span>Profile</span></a>
                  </li>
@@ -23,11 +23,11 @@
 
              <?php endif; ?>
              <li>
-                 <a href="../../index.php" class="active"> <span> <i class="fas fa-home"></i></span>
+                 <a href="/index.php" class="active"> <span> <i class="fas fa-home"></i></span>
                      <span> Home</span></a>
              </li>
              <li>
-                 <a href="../../logout.php" class="active"> <span><i class="fas fa-sign-out-alt"></i></span>
+                 <a href="/logout.php" class="active"> <span><i class="fas fa-sign-out-alt"></i></span>
                      <span>Logout</span></a>
              </li>
 
