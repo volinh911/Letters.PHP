@@ -258,6 +258,10 @@ ul.page-nav li.pageNumber:hover a, ul.page-nav li.pageNumber.active a {
   font-weight: 400;
 }
 
+.login-request button{
+  width: 100%;
+}
+
 /* footer */
 
 .detail-footer footer {
