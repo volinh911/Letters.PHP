@@ -31,7 +31,7 @@
 
     <?php include("includes/sub_header.php"); ?>
 
-    <div class="container">
+    <div class="container mb-5">
         <h1 class="h1" id="title">Word Hunt</h1>
         <div class="input">
             <input class="search-field" onkeypress="handle(event)" type="text" placeholder="Search words..." />

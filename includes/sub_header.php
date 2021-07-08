@@ -4,7 +4,7 @@
     <div class="toggle"></div>
     <ul class="navigation">
         <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="wordhunt.php" class="comedy">Dictionary</a></li>
+        <li><a href="wordhunt.php" class="comedy">Dicktionary</a></li>
         <div class="dropdown show">
             <a class="btn btn-secondary dropdown-toggle comedy" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Games

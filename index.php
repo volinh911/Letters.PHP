@@ -34,7 +34,7 @@ session_start();
         <div class="toggle"></div>
         <ul class="navigation">
             <li><a href="index.php" class="active">Home</a></li>
-            <li><a href="#">Dicktionary</a></li>
+            <li><a href="wordhunt.php">Dicktionary</a></li>
             <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Games
